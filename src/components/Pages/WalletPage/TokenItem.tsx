@@ -6,7 +6,7 @@ import useAccountBalance from "@/hooks/useAccountBalance.tsx";
 import {useSelector} from "react-redux";
 import {ClipLoader} from "react-spinners";
 
-const TokenItem = ({token}: { token: string }) => {
+const TokenItem = ({token}: { token: 'usdc' | 'matic' }) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const address = useSelector((store: any) => store.user.address)
     const {balance, balanceLoading} = useAccountBalance(address, token)

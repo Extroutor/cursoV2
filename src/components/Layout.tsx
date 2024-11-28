@@ -1,4 +1,4 @@
-import React, {ReactElement, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {useRouter} from "next/router"
 import {useDispatch, useSelector} from "react-redux"
 import Menu from "./Menu/Menu"
@@ -8,8 +8,8 @@ import DisconnectModal from "./Modals/DisconnectModal"
 import {Box} from "@mui/material";
 import {addAddress, setNickname} from "@/store/reducers/userReducer";
 import {getNicknameByAddress} from "@/blockchain/nickname";
-
-const Layout = ({children}: ReactElement) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Layout = ({children}: any) => {
   const router = useRouter()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const address = useSelector((state: any) => state.user.address)

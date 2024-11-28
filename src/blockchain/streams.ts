@@ -37,12 +37,12 @@ const getById = async (id: number) => {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getStreamDataByIndex = async (address: AddressType, streamIndex: number): any => {
+export const getStreamDataByIndex = async (address: AddressType, streamIndex: number): Promise<any> => {
   const streamId = Number(await getId(address, streamIndex));
   return await getStreamDataById(address, streamId)
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getStreamDataById = async (address: AddressType, streamId: number): any => {
+export const getStreamDataById = async (address: AddressType, streamId: number): Promise<any> => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const data: any = await getById(streamId)
 

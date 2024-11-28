@@ -51,13 +51,12 @@ const Welcome = () => {
           <Image
             src={mainImg}
             alt='main'
-            width='100%'
             style={{
               borderRadius: '20px',
               height: '100%',
+              width: '100%',
             }}
             layout="responsive"
-
           />
         </Box>
         <Box sx={{

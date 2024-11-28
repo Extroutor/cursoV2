@@ -1,11 +1,10 @@
 import {config} from "../../wagmi-config"
-import {AddressType} from "@/types/system"
 import {readContract, simulateContract, waitForTransactionReceipt, writeContract,} from '@wagmi/core'
 import {isLoading} from "@/store/reducers/uiReducer";
 import {setNickname} from "@/store/reducers/userReducer";
 import {nicknameABI, nicknameAddress} from "@/blockchain/constraints";
-
-export const getNicknameByAddress = async (address: AddressType) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getNicknameByAddress = async (address: any) => {
     try {
         return (await readContract(config, {
             address: nicknameAddress,
@@ -28,7 +27,7 @@ export const getAddressByNickname = async (nickname: string) => {
     })
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const addNickname = async (address: AddressType, nickname: string, dispatch: any) => {
+export const addNickname = async (address: any, nickname: string, dispatch: any) => {
     dispatch(isLoading(true))
     const {request} = await simulateContract(config, {
         address: nicknameAddress,
@@ -41,7 +40,7 @@ export const addNickname = async (address: AddressType, nickname: string, dispat
     await writeContractHandler(request, dispatch, nickname)
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const changeNickname = async (address: AddressType, oldNickname: string, newNickname: string, dispatch: any) => {
+export const changeNickname = async (address: any, oldNickname: string, newNickname: string, dispatch: any) => {
     dispatch(isLoading(true))
     const {request} = await simulateContract(config, {
         address: nicknameAddress,
