@@ -51,8 +51,6 @@ export const getPermitSignature = async (
       verifyingContract: USDCToken as Address,
     };
 
-    console.log("domain", domain)
-
     const types = {
       Permit: [
         {name: 'owner', type: 'address'},

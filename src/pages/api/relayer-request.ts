@@ -1,6 +1,6 @@
-import { ethers } from 'ethers';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { Defender } from '@openzeppelin/defender-sdk';
+import {ethers} from 'ethers';
+import type {NextApiRequest, NextApiResponse} from 'next';
+import {Defender} from '@openzeppelin/defender-sdk';
 import {ERC2771ForwarderABI, ERC2771ForwarderAddress} from "@/blockchain/constraints";
 
 export default async function handler(
@@ -8,14 +8,14 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { request, signature } = req.body;
+    const {request, signature} = req.body;
     if (!request.from || !request.to || !request.value) {
-      res.status(400).json({ error: 'Missing required fields' });
+      res.status(400).json({error: 'Missing required fields'});
     }
 
     const credentials = {
-      relayerApiKey: "2yYtrjB2EgqtNB3sS7zDjCuS4UHh9rhy", // AMOY
-      relayerApiSecret: "2KiWvXusjUJ3fmYmZVbhkA2hxnbb2zxiMf5fStk2EP5T8PoK2hrvMEKCw9heEtpm", // AMOY
+      relayerApiKey: process.env.RELAYER_API_KEY_AMOY as string, // AMOY
+      relayerApiSecret: process.env.RELAYER_SECRET_KEY_AMOY as string, // AMOY
     };
 
     // only with ethers (from official docs)
@@ -66,17 +66,17 @@ export default async function handler(
     // Wait for the transaction to be mined
     await tx.wait();
 
-    res.status(200).json({ success: true, txHash: tx.hash });
+    res.status(200).json({success: true, txHash: tx.hash});
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error('Error starting stream:', error.message);
-      res.status(500).json({ success: false, error: error.message });
+      res.status(500).json({success: false, error: error.message});
     } else {
       // unexpected error format
       console.error('Error starting stream:', error);
       res
         .status(500)
-        .json({ success: false, error: 'An unknown error occurred' });
+        .json({success: false, error: 'An unknown error occurred'});
     }
   }
 }

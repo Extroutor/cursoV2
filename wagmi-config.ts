@@ -4,7 +4,7 @@ import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { polygonAmoy } from '@reown/appkit/networks';
 import { createPublicClient, http as Vhttp } from 'viem';
 
-export const projectId = '16f460d50c25a91446f494e58c3999e7' // TODO hide
+export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
 
 const metadata = {
     name: 'Curso',
@@ -25,16 +25,13 @@ export const wagmiAdapter = new WagmiAdapter({
     networks: [polygonAmoy],
     connectors,
     transports: {
-        // [polygon.id]: http("https://polygon-mainnet.infura.io/v3/28aaa049f7f14880b375f80295d02142"),
-        [polygonAmoy.id]: http("https://polygon-amoy.infura.io/v3/28aaa049f7f14880b375f80295d02142"),
+        [polygonAmoy.id]: http( process.env.NEXT_PUBLIC_INFURA_API_URL_AMOY),
     },
 });
 
 export const publicClient = createPublicClient({
     chain: polygonAmoy,
-    transport: Vhttp("https://polygon-amoy.infura.io/v3/28aaa049f7f14880b375f80295d02142"),
-    // chain: polygon,
-    // transport: http(process.env.NEXT_PUBLIC_INFURA_API_URL_POLYGON),
+    transport: Vhttp( process.env.NEXT_PUBLIC_INFURA_API_URL_AMOY),
 });
 
 
