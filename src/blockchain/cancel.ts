@@ -1,6 +1,6 @@
 import {ethers} from "ethers";
 import {RelayProvider} from "@opengsn/provider";
-import {gsnPaymasterAddress, streamContractABI, streamContractAddress} from "./constraints.ts";
+import {gsnPaymasterAddress, streamContractABI, streamContractAddress} from "@/blockchain/constraints";
 
 export const cancelStream = async (streamId: number) => {
   console.log('streamContractABI', streamContractABI)
