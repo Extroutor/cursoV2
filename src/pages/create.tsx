@@ -162,7 +162,7 @@ const CreateStreamForm = () => {
             setOpenStartModal(false)
             // setCreateStreamError(false);
             // dispatch(getData(1, true) as any);
-            // router?.push('/');
+            router?.push('/');
           } else {
             // setCreateStreamError(true);
           }
