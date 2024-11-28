@@ -6,7 +6,7 @@ import * as stream from "stream"
 import {shortAddress} from "@/utils/shortAddress";
 import {timeLeft} from "@/utils/timeLeft";
 import Clock from "@/icons/clock.tsx";
-import {cancelStream} from "@/blockchain/cancel.ts";
+// import {cancelStream} from "@/blockchain/cancel.ts";
 import {parseDateTime} from "@/utils/dateTimeParser";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Progress = ({data}: { data: any }) => {
