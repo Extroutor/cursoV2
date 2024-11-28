@@ -73,6 +73,7 @@ export const getPermitSignature = async (
 
     // walletClient directly to sign
     const signature = await walletClient.signTypedData({
+      account,
       domain,
       types,
       primaryType: 'Permit',
