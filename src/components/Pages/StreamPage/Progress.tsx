@@ -46,7 +46,7 @@ const Progress = ({data}: { data: any }) => {
     }, [stream])
 
     const cancelStreamSubmit = async () => {
-        await cancelStream(Number(data.id))
+        // await cancelStream(Number(data.id))
     }
 
     const canICancel: boolean = (data.whoCancel === 0)
@@ -190,7 +190,7 @@ const Progress = ({data}: { data: any }) => {
                     padding: '10px 0',
                     width: '100%',
                     borderRadius: '100px',
-                }} onClick={() => {}}
+                }} onClick={cancelStreamSubmit}
                 >Stop</Box>}
             </Box>
         </Box>
