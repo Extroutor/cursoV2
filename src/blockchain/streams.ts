@@ -4,9 +4,10 @@ import {config} from "../../wagmi-config"
 import {
   historyContractABI,
   historyContractAddress,
-} from "./constraints.ts"
-import {getNicknameByAddress} from "./nickname.ts";
-import {getWithdrawByIndex} from "./withdraw.ts";
+} from "./constraints"
+import {getNicknameByAddress} from "@/blockchain/nickname"
+import {getWithdrawByIndex} from "@/blockchain/withdraw"
+
 
 export const getCount = async (address: AddressType) => {
   return await readContract(config, {
