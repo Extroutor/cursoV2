@@ -39,6 +39,7 @@ const RateModal = ({name, openModal, handleModalClose, defaultValue}: Props) => 
                     name={name}
                     control={control}
                     defaultValue={defaultVal || null}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     render={({field}: any) => (
                         <Box>
                             <Box sx={{

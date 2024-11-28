@@ -10,7 +10,9 @@ const RecentStreamList = () => {
 
     useEffect(() => {
         const groupByDate = () => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const grouped: any = {}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             streams.forEach((transaction: any) => {
                 const date = new Date(transaction.start_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
                 if (!grouped[date]) {
@@ -36,7 +38,7 @@ const RecentStreamList = () => {
                         padding: 0,
                         margin: 0,
                     }}>
-                        {/*@ts-ignore*/}
+                        {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
                         {groupedStream[date].map((stream) => (
                             <RecentStreamItem key={stream.id} stream={stream}/>
                         ))}

@@ -20,11 +20,11 @@ const CustomTimeModal = ({name, openModal, handleModalClose}: Props) => {
         control,
         // formState: { errors },
     } = useFormContext()
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleHoursChange = (event: any) => {
         setHours(parseInt(event.target.value, 10))
     }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleMinutesChange = (event: any) => {
         setMinutes(parseInt(event.target.value, 10))
     }
@@ -46,6 +46,7 @@ const CustomTimeModal = ({name, openModal, handleModalClose}: Props) => {
                 <Controller
                     name={name}
                     control={control}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     render={({field}: any) => (
                         <Box>
                             <Box sx={{

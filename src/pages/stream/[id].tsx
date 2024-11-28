@@ -11,7 +11,8 @@ import {useRouter} from "next/router";
 
 const StreamPage = () => {
   const router = useRouter()
-  const userAddress = useSelector((store: any) => store.user.address) || '0xc0121ef197f4AF9f0B48c5e41DEBD9615a6E02Fb'
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const userAddress = useSelector((store: any) => store.user.address) || '0xc0121ef197f4AF9f0B48c5e41DEBD9615a6E02Fb' //todo
   const dispatch = useDispatch()
 
   const {data, isLoading: isDataLoading} = useQuery({

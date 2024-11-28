@@ -49,6 +49,7 @@ const TextSelectorField = ({name, onModalOpen}: Props) => {
                         name={name}
                         control={control}
                         defaultValue={getValues(name) || ''}
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         render={({field}: any) => (
                             <input
                                 name={name}

@@ -1,7 +1,7 @@
 import {Box} from "@mui/material";
 // import Nickname from "./Nickname.tsx";
 // import Main from "./Main.tsx";
-import {useState} from "react";
+// import {useState} from "react";
 
 
 const AccountPage = () => {

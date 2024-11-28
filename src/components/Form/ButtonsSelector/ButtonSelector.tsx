@@ -3,11 +3,11 @@ import {useState} from "react";
 import {Controller, useFormContext} from "react-hook-form";
 import {Box} from "@mui/material";
 import ButtonSelectorItem from "./ButtonSelectorItem.tsx";
-import {Buttons} from "../../../styledComponents/buttons.tsx"
-import {formatDuration} from "../../../utils/milsecConverter.ts"
+import {Buttons} from "@/styledComponents/buttons"
+import {formatDuration} from "@/utils/milsecConverter"
 import Edit from "@/icons/edit.tsx";
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ButtonSelector = ({name, onModalOpen, defaultValue}: {name: string, onModalOpen: any, defaultValue: any }) => {
     const [active, setActive] = useState<number | undefined>(
         defaultValue === 30 * (60 * 1000)
@@ -21,6 +21,7 @@ const ButtonSelector = ({name, onModalOpen, defaultValue}: {name: string, onModa
         <Controller
             name={name}
             control={control}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
             render={({field}: any) => (
                 <Box sx={{
                     display: 'flex',

@@ -1,7 +1,6 @@
 import {Box, styled} from '@mui/material'
 import {useEffect, useState} from 'react'
 import {menuOptions} from '@/options/MenuOptions.ts'
-import {useLocation} from "react-router-dom"
 import {useRouter} from "next/router";
 
 const MenuStyledComponent = styled(Box)({

@@ -27,6 +27,7 @@ const HeaderComponent = () => {
 }
 
 const MainComponent = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const address = useSelector((state: any) => state.user.address)
 
   return (

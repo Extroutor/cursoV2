@@ -20,7 +20,7 @@ import {getPermitSignature} from "@/blockchain/permit.ts"
 import {encodeFunctionData, parseUnits} from "viem"
 import {getWalletClient} from "@wagmi/core"
 import {config, publicClient} from "../../wagmi-config.ts"
-import {ERC2771ForwarderABI, streamContractABI, streamContractAddress} from "@/blockchain/constraints.ts"
+import {streamContractABI, streamContractAddress} from "@/blockchain/constraints.ts"
 import {signMetaTxRequest} from "@/blockchain/signMetaTxRequest.ts"
 import {useRouter} from "next/router"
 import Layout from "@/components/Layout"
@@ -34,7 +34,7 @@ const CreateStreamPage = () => {
     duration: 60 * 60 * 1000
   }
 
-  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const validationSchema = object().shape({
     amount: string()
       .matches(/^[0-9.,]+$/, 'Only numbers, dots, and commas are allowed')
@@ -78,7 +78,7 @@ const CreateStreamForm = () => {
     const rate = getValues('rate')
     const streamRate = rateOptions.find(item => item.id === rate) || null
     const totalAmount = (Number(amountInput) / (streamRate?.value ?? 1)) * (duration / 1000)
-    const streamAmount = ethers.utils.parseUnits(String(totalAmount), USDC_DECIMALS)
+    // const streamAmount = ethers.utils.parseUnits(String(totalAmount), USDC_DECIMALS)
     const endTime = Math.floor((new Date().getTime() + duration) / 1000)
     const amountTest = parseUnits(String(totalAmount), USDC_DECIMALS);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

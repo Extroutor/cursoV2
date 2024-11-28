@@ -17,6 +17,7 @@ const RecentStream = ({streams}: { streams: any }) => {
                         display: 'flex',
                         flexDirection: 'column',
                     }}>
+                        {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
                         {streams.map((stream: any) => (
                             <RecentStreamItem key={stream.id} stream={stream}/>
                         ))}

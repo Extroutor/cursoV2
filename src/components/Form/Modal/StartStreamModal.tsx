@@ -42,7 +42,7 @@ const StartStreamModal = ({openModal, handleModalClose}: Props) => {
                     fontSize: '14px',
                     mt: '8px',
                     lineHeight: '16.41px'
-                }}>It might take a few seconds. You'll need to confirm the transaction twice — that's just how the
+                }}>It might take a few seconds. You&#39;ll need to confirm the transaction twice — that&#39;s just how the
                     system works to make sure everything goes smoothly.</Box>
 
                 <Box

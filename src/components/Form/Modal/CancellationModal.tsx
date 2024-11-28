@@ -41,6 +41,7 @@ const CancellationModal = ({name, defaultValue, openModal, handleModalClose}: Pr
                     name={name}
                     control={control}
                     defaultValue={t(`cancel:${defaultVal}`) || null}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     render={({field}: any) => (
                         <Box>
                             <Box sx={{

@@ -6,12 +6,13 @@ import {copyTooltip} from "@/store/reducers/uiReducer.tsx"
 import {useRouter} from "next/router";
 
 const Tooltip = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const isCopyTooltip = useSelector((state: any) => state.ui.isCopyTooltip)
     const dispatch = useDispatch()
     const {pathname} = useRouter()
 
     useEffect(() => {
-        let timerId = setTimeout(() => {
+        const timerId = setTimeout(() => {
             dispatch(copyTooltip(false))
         }, 3000)
 
