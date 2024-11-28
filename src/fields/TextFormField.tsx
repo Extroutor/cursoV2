@@ -1,7 +1,7 @@
 import ClearInput from '@/icons/clearInput.tsx'
 import {Box, TextField} from '@mui/material'
 import {Controller, useFormContext} from 'react-hook-form'
-import {validateAddress} from "../utils/addressValidation.tsx"
+import {validateAddress} from "@/utils/addressValidation"
 
 interface Props {
     name: string

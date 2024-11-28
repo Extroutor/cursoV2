@@ -1,7 +1,7 @@
 import {Box} from "@mui/material"
 import Repeat from "@/icons/repeat.tsx"
 import Stop from "@/icons/stop.tsx"
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DropdownMenu = ({setIsOpenCloseModal}: {setIsOpenCloseModal: any}) => {
     return (
         <Box sx={{

@@ -1,11 +1,13 @@
 import {config} from "../../wagmi-config.ts"
 import {readContract} from '@wagmi/core'
 import {ethers} from "ethers"
+import {AddressType} from "@/types/system"
 
-export const getAccountBalance = async (address: any, token: any) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getAccountBalance = async (address: AddressType, token: { address: AddressType, abi: any }) => {
     if (!address) return 0
 
-    const balanceOf: any = await readContract(config, {
+    const balanceOf: string | number | bigint | undefined = await readContract(config, {
         address: token.address,
         abi: token.abi,
         functionName: 'balanceOf',

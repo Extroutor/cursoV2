@@ -12,7 +12,7 @@ import useNickname from "@/hooks/useNickname.tsx"
 import {ClipLoader} from "react-spinners"
 import {useTranslation} from "react-i18next"
 import {useFormContext} from "react-hook-form"
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const BasicForm = ({setStep}: { setStep: any }) => {
     const { t } = useTranslation()
 

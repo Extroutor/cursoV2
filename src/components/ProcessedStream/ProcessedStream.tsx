@@ -3,7 +3,7 @@ import {SubtitleTypography} from '../Typography/SubtitleTypography.tsx'
 import ProcessedStreamList from "./ProcessedStreamList.tsx"
 import NoProcessedStream from "./NoProcessedStream.tsx"
 import {useTranslation} from "react-i18next";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ProcessedStream = ({streams}: {streams: any}) => {
     const { t } = useTranslation()
 

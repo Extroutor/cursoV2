@@ -28,6 +28,7 @@ export default async function handler(
     const forwarderContract = new ethers.Contract(
       ERC2771ForwarderAddress,
       ERC2771ForwarderABI,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       signer as any
     );
 

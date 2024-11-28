@@ -1,5 +1,5 @@
 import {Box} from "@mui/material";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DetailsContainer = ({children}: {children: any}) => {
     return (
         <Box sx={{

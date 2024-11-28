@@ -10,6 +10,7 @@ import {copyTooltip} from "@/store/reducers/uiReducer.tsx"
 import {useRouter} from "next/router"
 
 const WalletBalance = ({buyCrypto}: { buyCrypto: boolean }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const {nickname, address} = useSelector((state: any) => state.user)
     const {balance, balanceLoading} = useAccountBalance(address, 'usdc')
     const router = useRouter()

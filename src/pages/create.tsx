@@ -58,6 +58,7 @@ const CreateStreamPage = () => {
 const CreateStreamForm = () => {
   const router = useRouter()
   const {t} = useTranslation('common')
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const address = useSelector((state: any) => state.user.address)
   const [step, setStep] = useState(0)
   const [openStartModal, setOpenStartModal] = useState(false)
@@ -80,7 +81,7 @@ const CreateStreamForm = () => {
     const streamAmount = ethers.utils.parseUnits(String(totalAmount), USDC_DECIMALS)
     const endTime = Math.floor((new Date().getTime() + duration) / 1000)
     const amountTest = parseUnits(String(totalAmount), USDC_DECIMALS);
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
     const streamArgs: any = {
       amount: amountTest,
       address,
@@ -96,6 +97,7 @@ const CreateStreamForm = () => {
       router: router
     };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
     async function startStream(streamArgs: any) {
       try {
         const sig = await getPermitSignature(address, streamArgs.amount);
@@ -133,7 +135,7 @@ const CreateStreamForm = () => {
             args: [streamDetails, sig, streamArgs.title],
             account: walletClient.account,
           });
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
           const metaTxData: any = {
             to: streamContractAddress,
             data: createStreamData,

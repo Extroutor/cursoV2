@@ -1,5 +1,5 @@
 import {BigNumber, BigNumberish, ethers} from "ethers"
-import {USDC_DECIMALS} from "../blockchain/constants.ts"
+import {USDC_DECIMALS} from "@/blockchain/constants"
 
 export const ZERO = BigNumber.from(0)
 

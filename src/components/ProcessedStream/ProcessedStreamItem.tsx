@@ -12,7 +12,7 @@ import {shortAddress} from "@/utils/shortAddress"
 import {timeLeft} from "@/utils/timeLeft"
 import ArrowDown from "@/icons/arrowDown.tsx"
 import {useRouter} from "next/router"
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ProcessedStreamItem = ({data}: { data: any }) => {
     const [openMenu, setOpenMenu] = useState(false)
     const [isOpenCloseModal, setIsOpenCloseModal] = useState(false)

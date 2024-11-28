@@ -1,6 +1,6 @@
 import {ConnectButton} from '@rainbow-me/rainbowkit';
 import {useDispatch} from "react-redux";
-import {connectHandler} from "../utils/connectHandler.ts";
+import {connectHandler} from "@/utils/connectHandler";
 import {useTranslation} from "react-i18next";
 
 export const WalletConnectButton = () => {

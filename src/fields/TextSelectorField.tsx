@@ -2,7 +2,7 @@ import {Box} from '@mui/material'
 import SelectorArrow from '@/icons/selectorArrow.tsx'
 import {useState} from 'react'
 import {Controller, useFormContext} from 'react-hook-form';
-import {amountValidation} from "../utils/amountValidation.tsx";
+import {amountValidation} from "@/utils/amountValidation";
 import {rateOptions} from "@/options/StreamFormOptions.ts";
 
 interface Props {

@@ -1,6 +1,6 @@
 import {Box} from "@mui/material";
 import MainCustomModal from "./MainCustomModal.tsx";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CancelModal = ({isOpen, setOpen, counterparty}: {isOpen: boolean, setOpen: any, counterparty: string}) => {
     return (
         <MainCustomModal isOpen={isOpen} setOpen={setOpen}>

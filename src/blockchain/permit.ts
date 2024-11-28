@@ -3,7 +3,7 @@ import {Address} from 'viem';
 import {CURRENT_NETWORK_ID} from './networks';
 import {BigNumber} from 'ethers';
 import {config} from "../../wagmi-config";
-import {PermitSignature} from "../types/permitSignature";
+import {PermitSignature} from "@/types/permitSignature";
 import {addServiceFee} from "./fee";
 import {streamContractAddress, USDCABI, USDCToken} from "./constraints";
 

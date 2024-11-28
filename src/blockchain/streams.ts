@@ -2,111 +2,113 @@ import {AddressType} from "../types/system.ts"
 import {readContract} from "@wagmi/core"
 import {config} from "../../wagmi-config.ts"
 import {
-    historyContractABI,
-    historyContractAddress,
+  historyContractABI,
+  historyContractAddress,
 } from "./constraints.ts"
 import {getNicknameByAddress} from "./nickname.ts";
 import {getWithdrawByIndex} from "./withdraw.ts";
 
 export const getCount = async (address: AddressType) => {
-    return await readContract(config, {
-        address: historyContractAddress,
-        abi: historyContractABI,
-        functionName: 'getNumberOfArray',
-        args: [address],
-    })
+  return await readContract(config, {
+    address: historyContractAddress,
+    abi: historyContractABI,
+    functionName: 'getNumberOfArray',
+    args: [address],
+  })
 }
 
 export const getId = async (address: AddressType, id: number) => {
-    return await readContract(config, {
-        address: historyContractAddress,
-        abi: historyContractABI,
-        functionName: 'addressIds',
-        args: [address, id],
-    })
+  return await readContract(config, {
+    address: historyContractAddress,
+    abi: historyContractABI,
+    functionName: 'addressIds',
+    args: [address, id],
+  })
 }
 
 const getById = async (id: number) => {
-    return await readContract(config, {
-        address: historyContractAddress,
-        abi: historyContractABI,
-        functionName: 'getHistoryStream',
-        args: [id],
-    })
+  return await readContract(config, {
+    address: historyContractAddress,
+    abi: historyContractABI,
+    functionName: 'getHistoryStream',
+    args: [id],
+  })
 }
 
 
-export const getStreamDataByIndex = async (address: AddressType, streamIndex: number): Promise<any> => {
-    const streamId = Number(await getId(address, streamIndex));
-    return await getStreamDataById(address, streamId)
+export const getStreamDataByIndex = async (address: AddressType, streamIndex: number): Promise<never> => {
+  const streamId = Number(await getId(address, streamIndex));
+  return await getStreamDataById(address, streamId)
 }
 
-export const getStreamDataById = async (address: AddressType, streamId: number): Promise<any> => {
+export const getStreamDataById = async (address: AddressType, streamId: number): Promise<never> => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const data: any = await getById(streamId)
 
-    const data: any = await getById(streamId)
+  const countOfWithdraws = data.numberOfWithdraws;
 
-    const countOfWithdraws = data.numberOfWithdraws;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const withdrawPromises: Promise<any>[] = [];
+  for (let i = 1; i <= countOfWithdraws; i++) {
+    const withdrawPromise = getWithdrawInfo(streamId, i);
+    withdrawPromises.push(withdrawPromise);
+  }
 
-    const withdrawPromises: Promise<any>[] = [];
-    for (let i = 1; i <= countOfWithdraws; i++) {
-        const withdrawPromise = getWithdrawInfo(streamId, i);
-        withdrawPromises.push(withdrawPromise);
-    }
+  const withdrawsPromise = Promise.all(withdrawPromises);
 
-    const withdrawsPromise = Promise.all(withdrawPromises);
+  const nickNameUserAddress = data.sender === address
+    ? data.recipient
+    : data.sender
 
-    const nickNameUserAddress = data.sender === address
-        ? data.recipient
-        : data.sender
+  const nicknamePromise = await getNicknameByAddress(nickNameUserAddress)
 
-    const nicknamePromise = await getNicknameByAddress(nickNameUserAddress)
+  const [streamWithdraws, nickname] = await Promise.all([withdrawsPromise, nicknamePromise]);
 
-    const [streamWithdraws, nickname] = await Promise.all([withdrawsPromise, nicknamePromise]);
+  const recipientAmountOnCancel = Number(data.recipientAmountOnCancel);
+  const cancelTime = Number(data.cancelTime);
 
-    const recipientAmountOnCancel = Number(data.recipientAmountOnCancel);
-    const cancelTime = Number(data.cancelTime);
+  if (recipientAmountOnCancel !== 0) {
+    streamWithdraws.push({
+      amount: recipientAmountOnCancel / 10 ** 6,
+      amountRaw: String(recipientAmountOnCancel),
+      date: cancelTime * 1000,
+      isCancelWithdraw: true,
+    });
+  }
 
-    if (recipientAmountOnCancel !== 0) {
-        streamWithdraws.push({
-            amount: recipientAmountOnCancel / 10 ** 6,
-            amountRaw: String(recipientAmountOnCancel),
-            date: cancelTime * 1000,
-            isCancelWithdraw: true,
-        });
-    }
+  const totalWithdraw = streamWithdraws.reduce((sum, w) => sum + w.amount, 0);
 
-    const totalWithdraw = streamWithdraws.reduce((sum, w) => sum + w.amount, 0);
-
-    return {
-        id: Number(streamId),
-        start_date: Number(data.startTime) * 1000,
-        end_date: Number(data.stopTime) * 1000,
-        cancel_date: Number(data.cancelTime) * 1000,
-        block_date: Number(data.blockTime) * 1000,
-        amount: Number(data.deposit) / 10 ** 6,
-        amountRaw: String(data.deposit),
-        address_from: data.sender,
-        address_to: data.recipient,
-        counterpartyNickname: nickname,
-        whoCancel: Number(data.whoCancel),
-        currency: "USDC",
-        countOfWithdraw: countOfWithdraws,
-        withdraws: streamWithdraws,
-        totalWithdraws: totalWithdraw,
-        purpose: data.purpose,
-        status: Number(data.status),
-        amIRecipient: String(data.recipient).toLowerCase() === String(address).toLowerCase(),
-    }
+  return {
+    id: Number(streamId),
+    start_date: Number(data.startTime) * 1000,
+    end_date: Number(data.stopTime) * 1000,
+    cancel_date: Number(data.cancelTime) * 1000,
+    block_date: Number(data.blockTime) * 1000,
+    amount: Number(data.deposit) / 10 ** 6,
+    amountRaw: String(data.deposit),
+    address_from: data.sender,
+    address_to: data.recipient,
+    counterpartyNickname: nickname,
+    whoCancel: Number(data.whoCancel),
+    currency: "USDC",
+    countOfWithdraw: countOfWithdraws,
+    withdraws: streamWithdraws,
+    totalWithdraws: totalWithdraw,
+    purpose: data.purpose,
+    status: Number(data.status),
+    amIRecipient: String(data.recipient).toLowerCase() === String(address).toLowerCase(),
+  }
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getWithdrawInfo = async (streamId: number, withdrawIndex: number): Promise<any> => {
-    const data: any = await getWithdrawByIndex(streamId, withdrawIndex)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const data: any = await getWithdrawByIndex(streamId, withdrawIndex)
 
-    return {
-        amount: Number(data[0]) / 10 ** 6,
-        amountRaw: String(data[0]),
-        date: Number(data[1]) * 1000,
-    }
+  return {
+    amount: Number(data[0]) / 10 ** 6,
+    amountRaw: String(data[0]),
+    date: Number(data[1]) * 1000,
+  }
 }
 
 // export const createStream = async (data: any, setOpenStartModal: any): Promise<void> => {

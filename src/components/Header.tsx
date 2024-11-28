@@ -10,6 +10,7 @@ import Logo from "@/icons/logo.tsx"
 import {useRouter} from "next/router"
 
 const Header = ({title}: { title: string }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const address = useSelector((state: any) => state.user.address)
   const location = useRouter()
   const dispatch = useDispatch()

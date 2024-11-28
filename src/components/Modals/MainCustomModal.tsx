@@ -1,6 +1,6 @@
 import {Box, Modal} from '@mui/material'
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MainCustomModal = ({children, isOpen, setOpen}: { children: any, isOpen: boolean, setOpen: any }) => {
 
     return (

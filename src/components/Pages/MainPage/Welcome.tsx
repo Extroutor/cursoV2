@@ -2,7 +2,7 @@ import {Box} from "@mui/material"
 import mainImg from "@/icons/content.svg"
 import {useAppKit, useAppKitAccount} from '@reown/appkit/react'
 import {useDisconnect} from "wagmi"
-import {connectHandler} from "../../../utils/connectHandler.ts"
+import {connectHandler} from "@/utils/connectHandler"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
 import {WalletConnectButton} from "../../WalletConnectButton.tsx"

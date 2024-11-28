@@ -2,7 +2,7 @@ import {Box} from "@mui/material"
 import ArrowRight from "@/icons/settings/arrowRight.tsx"
 import LinkArrow from "@/icons/settings/linkArrow.tsx"
 import {useRouter} from "next/router"
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SettingItem = ({icon, title, action, to}: { icon: any, title: string, action: string, to?: string }) => {
     const router = useRouter()
     return (

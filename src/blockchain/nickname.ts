@@ -5,7 +5,7 @@ import {isLoading} from "@/store/reducers/uiReducer";
 import {setNickname} from "@/store/reducers/userReducer";
 import {nicknameABI, nicknameAddress} from "@/blockchain/constraints";
 
-export const getNicknameByAddress = async (address: any) => {
+export const getNicknameByAddress = async (address: AddressType) => {
     try {
         return (await readContract(config, {
             address: nicknameAddress,
@@ -19,7 +19,7 @@ export const getNicknameByAddress = async (address: any) => {
     }
 }
 
-export const getAddressByNickname = async (nickname: any) => {
+export const getAddressByNickname = async (nickname: string) => {
     return await readContract(config, {
         address: nicknameAddress,
         abi: nicknameABI,
@@ -27,7 +27,7 @@ export const getAddressByNickname = async (nickname: any) => {
         args: [nickname],
     })
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addNickname = async (address: AddressType, nickname: string, dispatch: any) => {
     dispatch(isLoading(true))
     const {request} = await simulateContract(config, {
@@ -40,7 +40,7 @@ export const addNickname = async (address: AddressType, nickname: string, dispat
 
     await writeContractHandler(request, dispatch, nickname)
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const changeNickname = async (address: AddressType, oldNickname: string, newNickname: string, dispatch: any) => {
     dispatch(isLoading(true))
     const {request} = await simulateContract(config, {
@@ -53,10 +53,11 @@ export const changeNickname = async (address: AddressType, oldNickname: string, 
 
     await writeContractHandler(request, dispatch, newNickname)
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const writeContractHandler = async (request: any, dispatch: any, nickname: string) => {
     await writeContract(config, request).then((hash) => {
-        let timer = setInterval(async () => {
+        const timer = setInterval(async () => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const receipt: any = await waitForTransactionReceipt(config, {
                 hash: hash,
             }).catch(err => {

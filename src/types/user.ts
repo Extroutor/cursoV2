@@ -1,5 +1,6 @@
 export interface UserState {
     address: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     extension: any,
     nickName: string,
     isConnect: boolean
@@ -14,6 +15,7 @@ export enum UserActionTypes {
 
 interface ExtensionUpdateAction {
     type: UserActionTypes.EXTENSION_UPDATE;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     payload: any
 }
 

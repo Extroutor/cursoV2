@@ -3,6 +3,7 @@ import {Box, Modal} from "@mui/material";
 import {CircularProgress} from "@mui/joy"
 
 const Loading = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const loading = useSelector((state: any) => state.ui.loading)
 
     return (

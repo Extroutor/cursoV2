@@ -4,7 +4,7 @@ import DetailsGroup from "./DetailsGroup.tsx";
 import DetailsContainer from "./DetailsContainer.tsx";
 import {StatusObj} from "@/options/StatusBarOptions.ts";
 import {CancelObj} from "@/options/cancelationOptions.tsx";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Details = ({data}: {data: any}) => {
     const statusID = (data.status === 0 && data.end_date < Date.now() ? 3 : data.start_date > Date.now() ? 4 : 0) || 1
     const counterpartyAddress = data.amIRecipient ? data.address_from : data.address_to

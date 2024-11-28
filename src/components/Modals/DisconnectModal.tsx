@@ -7,6 +7,7 @@ import {useDisconnect} from "wagmi"
 import {useRouter} from "next/router"
 
 const DisconnectModal = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const disconnectModal = useSelector((state: any) => state.ui.disconnectModal)
     const dispatch = useDispatch()
     const {disconnectAsync} = useDisconnect()

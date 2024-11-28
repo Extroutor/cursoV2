@@ -4,7 +4,7 @@ import StatusBar from '../StatusBar.tsx';
 import {shortAddress} from "@/utils/shortAddress";
 import ArrowDown from "@/icons/arrowDown.tsx";
 import {useRouter} from "next/router";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const RecentStreamItem = ({stream}: { stream: any }) => {
     const router = useRouter()
     const counterpartyAddress = stream.amIRecipient ? stream.address_from : stream.address_to

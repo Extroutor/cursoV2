@@ -7,6 +7,7 @@ import {useTranslation} from "react-i18next"
 interface Props {
     value: string,
     name: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onClick: any
 }
 
