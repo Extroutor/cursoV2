@@ -1,10 +1,10 @@
 import {Box} from "@mui/material"
 import BackArrow from "@/icons/backArrow.tsx"
 import RepeatBig from "@/icons/repeatBig.tsx"
-import {useNavigate} from "react-router-dom"
+import {useRouter} from "next/router";
 
 const Header = () => {
-    const navigate = useNavigate()
+    const router = useRouter()
 
     return (
         <Box sx={{
@@ -23,7 +23,7 @@ const Header = () => {
             maxWidth: '800px',
             margin: '0 auto',
         }}>
-            <Box sx={{ height: '30px', cursor: 'pointer' }} onClick={() => navigate('/')}><BackArrow/></Box>
+            <Box sx={{ height: '30px', cursor: 'pointer' }} onClick={() => router.push('/')}><BackArrow/></Box>
             <Box sx={{ height: '30px', cursor: 'pointer' }}><RepeatBig/></Box>
         </Box>
     )

@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getCount, getStreamDataByIndex} from "@/blockchain/streams.ts"
-import {isLoading} from "../../store/reducers/uiReducer.tsx";
+import {isLoading} from "@/store/reducers/uiReducer.tsx";
 
 const useStreams = () => {
     const address = useSelector((store: any) => store.user.address)
@@ -30,6 +30,7 @@ const useStreams = () => {
                 }
 
                 const streams: any = await Promise.all(streamPromises)
+                console.log('streams', streams)
                 setStreams(streams)
                 setProcessedStream(streams.filter((stream: any) => stream.status === 0 && stream.end_date > Date.now()) || [])
                 setRecentStream(streams.filter((stream: any) => stream.status === 0 && stream.end_date < Date.now()) || [])

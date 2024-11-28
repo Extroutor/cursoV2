@@ -1,24 +1,23 @@
 import Details from "@/components/Pages/StreamPage/Details.tsx"
-import {useParams} from "react-router-dom"
 import {useQuery} from "@tanstack/react-query"
 import {useDispatch, useSelector} from "react-redux"
 import {useEffect} from "react"
 import {Box} from "@mui/material"
-import {isLoading} from "../../store/reducers/uiReducer"
+import {isLoading} from "@/store/reducers/uiReducer"
 import {getStreamDataById} from "@/blockchain/streams"
 import Progress from "@/components/Pages/StreamPage/Progress"
 import Header from "@/components/Pages/StreamPage/Header"
+import {useRouter} from "next/router";
 
 const StreamPage = () => {
-  const {id} = useParams()
-  const userAddress = useSelector((store: any) => store.user.address)
+  const router = useRouter()
+  const userAddress = useSelector((store: any) => store.user.address) || '0xc0121ef197f4AF9f0B48c5e41DEBD9615a6E02Fb'
   const dispatch = useDispatch()
 
-
   const {data, isLoading: isDataLoading} = useQuery({
-    queryKey: ["streams", id],
-    queryFn: async () => !!id || Number(id) === 0
-      ? await getStreamDataById(userAddress, Number(id))
+    queryKey: ["streams", router.query.id],
+    queryFn: async () => !!router.query.id || Number(router.query.id) === 0
+      ? await getStreamDataById(userAddress, Number(router.query.id))
       : null
   })
 
@@ -31,7 +30,7 @@ const StreamPage = () => {
 
   return (
     <>
-      {!isDataLoading
+      {!isDataLoading && data
         &&
           <>
               <Header/>

@@ -1,12 +1,12 @@
 import {Box} from '@mui/material'
 import ArrowUp from '@/icons/arrowUp.tsx';
 import StatusBar from '../StatusBar.tsx';
-import {shortAddress} from "../../utils/shortAddress.ts";
-import {useNavigate} from "react-router-dom";
+import {shortAddress} from "@/utils/shortAddress";
 import ArrowDown from "@/icons/arrowDown.tsx";
+import {useRouter} from "next/router";
 
 const RecentStreamItem = ({stream}: { stream: any }) => {
-    const navigate = useNavigate()
+    const router = useRouter()
     const counterpartyAddress = stream.amIRecipient ? stream.address_from : stream.address_to
 
     const status = stream.status === 0 && stream.end_date < Date.now() ? 3 : stream.start_date > Date.now() ? 4 : 0
@@ -20,7 +20,7 @@ const RecentStreamItem = ({stream}: { stream: any }) => {
             gap: '8px',
             cursor: 'pointer',
         }}
-             onClick={() => navigate(`/stream/${stream.id}`)}
+             onClick={() => router.push(`/stream/${stream.id}`)}
         >
             <Box
                 sx={{

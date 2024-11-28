@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react';
 import {Box} from "@mui/material";
 import CustomCircularProgressBar from "./CustomCircularProgressBar.tsx";
-import {clamp} from "../../../utils/math.ts"
+import {clamp} from "@/utils/math"
 import * as stream from "stream"
-import {shortAddress} from "../../../utils/shortAddress.ts";
-import {timeLeft} from "../../../utils/timeLeft.tsx";
+import {shortAddress} from "@/utils/shortAddress";
+import {timeLeft} from "@/utils/timeLeft";
 import Clock from "@/icons/clock.tsx";
 import {cancelStream} from "@/blockchain/cancel.ts";
-import {parseDateTime} from "../../../utils/dateTimeParser.ts";
+import {parseDateTime} from "@/utils/dateTimeParser";
 
 const Progress = ({data}: { data: any }) => {
     const [progressType, setProgressType] = useState(0)

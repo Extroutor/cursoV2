@@ -6,12 +6,12 @@ import StatusBar from '../StatusBar.tsx'
 import DropdownMenu from "./DropdownMenu.tsx"
 import {useEffect, useRef, useState} from "react"
 import CancelModal from "../Modals/CancelModal.tsx"
-import {useNavigate} from "react-router-dom"
-import {clamp} from "../../utils/math.ts"
+import {clamp} from "@/utils/math"
 import stream from "stream"
-import {shortAddress} from "../../utils/shortAddress.ts"
-import {timeLeft} from "../../utils/timeLeft.tsx"
-import ArrowDown from "@/icons/arrowDown.tsx";
+import {shortAddress} from "@/utils/shortAddress"
+import {timeLeft} from "@/utils/timeLeft"
+import ArrowDown from "@/icons/arrowDown.tsx"
+import {useRouter} from "next/router"
 
 const ProcessedStreamItem = ({data}: { data: any }) => {
     const [openMenu, setOpenMenu] = useState(false)
@@ -24,7 +24,7 @@ const ProcessedStreamItem = ({data}: { data: any }) => {
     const buttonRef = useRef(null)
     const dropdownRef = useRef(null)
 
-    const navigate = useNavigate()
+    const router = useRouter()
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -39,17 +39,17 @@ const ProcessedStreamItem = ({data}: { data: any }) => {
     }, [data.end_date])
 
     useEffect(() => {
-        // @ts-ignore
-        const handleDocumentClick = (event) => {
-            // @ts-ignore
-            if (!buttonRef.current.contains(event.target) && !dropdownRef.current.contains(event.target)) {
-                setOpenMenu(false)
-            }
-        }
-        document.addEventListener('click', handleDocumentClick)
-        return () => {
-            document.removeEventListener('click', handleDocumentClick)
-        }
+        // // @ts-ignore
+        // const handleDocumentClick = (event) => {
+        //     // @ts-ignore
+        //     if (!buttonRef.current.contains(event.target) && !dropdownRef.current.contains(event.target)) {
+        //         setOpenMenu(false)
+        //     }
+        // }
+        // document.addEventListener('click', handleDocumentClick)
+        // return () => {
+        //     document.removeEventListener('click', handleDocumentClick)
+        // }
     }, [])
 
     useEffect(() => {
@@ -78,7 +78,7 @@ const ProcessedStreamItem = ({data}: { data: any }) => {
     }
 
     return (
-        <Box sx={{position: 'relative'}} onClick={() => navigate(`/stream/${data.id}`)}>
+        <Box sx={{position: 'relative'}} onClick={() => router.push(`/stream/${data.id}`)}>
             <Box sx={{
                 bgcolor: '#F4F4F4',
                 padding: '20px',

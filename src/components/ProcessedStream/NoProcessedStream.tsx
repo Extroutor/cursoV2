@@ -1,10 +1,10 @@
-import {Box} from "@mui/material";
+import {Box} from "@mui/material"
 import {useTranslation} from "react-i18next"
-import {useNavigate} from "react-router-dom";
+import {useRouter} from "next/router"
 
 const NoProcessedStream = () => {
     const {t} = useTranslation()
-    const navigate = useNavigate()
+    const router = useRouter()
 
     return (
         <Box sx={{
@@ -40,7 +40,7 @@ const NoProcessedStream = () => {
                 cursor: 'pointer',
                 lineHeight: '18.75px'
             }}
-                 onClick={() => navigate('/create')}
+                 onClick={() => router.push('/create')}
             >{t('common:create')}</Box>
             {/*<span style={{*/}
             {/*    color: '#8F8F8F',*/}
