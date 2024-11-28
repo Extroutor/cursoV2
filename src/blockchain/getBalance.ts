@@ -6,8 +6,8 @@ import {config} from "../../wagmi-config"
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getAccountBalance = async (address: AddressType, token: { address: AddressType, abi: any }) => {
     if (!address) return 0
-
-    const balanceOf: string | number | bigint | undefined = await readContract(config, {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const balanceOf: any = await readContract(config, {
         address: token.address,
         abi: token.abi,
         functionName: 'balanceOf',
