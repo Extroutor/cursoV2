@@ -12,7 +12,6 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import Confirmation from "@/components/Form/Confirmation.tsx"
 import StartStreamModal from "@/components/Form/Modal/StartStreamModal.tsx"
 import Form from "@/components/Form/Form.tsx"
-import {ethers} from "ethers"
 import {USDC_DECIMALS} from "@/blockchain/constants.ts"
 import {useSelector} from "react-redux"
 import {rateOptions} from "@/options/StreamFormOptions.ts"
