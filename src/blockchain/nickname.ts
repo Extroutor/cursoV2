@@ -1,4 +1,4 @@
-import {config} from "../../wagmi-config.ts"
+import {config} from "../../wagmi-config"
 import {AddressType} from "@/types/system"
 import {readContract, simulateContract, waitForTransactionReceipt, writeContract,} from '@wagmi/core'
 import {isLoading} from "@/store/reducers/uiReducer";

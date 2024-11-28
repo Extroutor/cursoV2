@@ -1,7 +1,7 @@
-import {config} from "../../wagmi-config.ts"
 import {readContract} from '@wagmi/core'
 import {ethers} from "ethers"
 import {AddressType} from "@/types/system"
+import {config} from "../../wagmi-config"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getAccountBalance = async (address: AddressType, token: { address: AddressType, abi: any }) => {

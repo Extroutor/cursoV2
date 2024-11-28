@@ -1,6 +1,6 @@
-import {AddressType} from "../types/system.ts"
+import {AddressType} from "@/types/system"
 import {readContract} from "@wagmi/core"
-import {config} from "../../wagmi-config.ts"
+import {config} from "../../wagmi-config"
 import {
   historyContractABI,
   historyContractAddress,
