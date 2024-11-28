@@ -190,7 +190,7 @@ const Progress = ({data}: { data: any }) => {
                     padding: '10px 0',
                     width: '100%',
                     borderRadius: '100px',
-                }} onClick={cancelStreamSubmit}
+                }} onClick={() => {}}
                 >Stop</Box>}
             </Box>
         </Box>
