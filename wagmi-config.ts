@@ -1,29 +1,10 @@
-// import '@rainbow-me/rainbowkit/styles.css'
-// import {getDefaultConfig} from '@rainbow-me/rainbowkit'
-// // import {polygon} from 'wagmi/chains'
-// import {QueryClient} from "@tanstack/react-query"
-// import {mainnet} from 'viem/chains'
 import { CreateConnectorFn, http } from 'wagmi';
 import { walletConnect, injected, metaMask } from 'wagmi/connectors';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { polygonAmoy } from '@reown/appkit/networks';
 import { createPublicClient, http as Vhttp } from 'viem';
 
-// export const config = getDefaultConfig({
-//     appName: 'Curso',
-//     projectId: '08ec41a934f82d1db339a13e0115be6a',
-//     chains: [polygon, mainnet],
-//     ssr: false,
-// });
-//
-// export const publicClient = createPublicClient({
-//     chain: polygon,
-//     transport: http(),
-// })
-//
-// export const queryClient = new QueryClient();
-
-export const projectId = '16f460d50c25a91446f494e58c3999e7'
+export const projectId = '16f460d50c25a91446f494e58c3999e7' // TODO hide
 
 const metadata = {
     name: 'Curso',
@@ -44,16 +25,14 @@ export const wagmiAdapter = new WagmiAdapter({
     networks: [polygonAmoy],
     connectors,
     transports: {
-        // [polygon.id]: http(process.env.NEXT_PUBLIC_INFURA_API_URL as string),
-        [polygonAmoy.id]: http(
-            process.env.NEXT_PUBLIC_INFURA_API_URL_AMOY as string
-        ),
+        // [polygon.id]: http("https://polygon-mainnet.infura.io/v3/28aaa049f7f14880b375f80295d02142"),
+        [polygonAmoy.id]: http("https://polygon-amoy.infura.io/v3/28aaa049f7f14880b375f80295d02142"),
     },
 });
 
 export const publicClient = createPublicClient({
     chain: polygonAmoy,
-    transport: Vhttp(process.env.NEXT_PUBLIC_INFURA_API_URL_POLYGON_AMOY),
+    transport: Vhttp("https://polygon-amoy.infura.io/v3/28aaa049f7f14880b375f80295d02142"),
     // chain: polygon,
     // transport: http(process.env.NEXT_PUBLIC_INFURA_API_URL_POLYGON),
 });
