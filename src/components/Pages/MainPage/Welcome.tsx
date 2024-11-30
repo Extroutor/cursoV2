@@ -1,17 +1,17 @@
 import {Box} from "@mui/material"
 import mainImg from "@/icons/content.svg"
-import {useAppKit, useAppKitAccount} from '@reown/appkit/react'
+import {useAppKitAccount} from '@reown/appkit/react'
 import {useDisconnect} from "wagmi"
 import {connectHandler} from "@/utils/connectHandler"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
-import {WalletConnectButton} from "../../WalletConnectButton.tsx"
+import {WalletConnectButton} from "../../ConnectButton.tsx"
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next'
 
 const Welcome = () => {
   const {t} = useTranslation("common")
-  const {open} = useAppKit()
+  // const {open} = useAppKit()
   const {address, isConnected: isConnect} = useAppKitAccount();
   const {disconnect} = useDisconnect()
   const dispatch = useDispatch()
@@ -22,10 +22,10 @@ const Welcome = () => {
 
   }, [address, isConnect])
 
-  const onConnect = async () => {
-    disconnect()
-    open()
-  }
+  // const onConnect = async () => {
+  //   disconnect()
+  //   open()
+  // }
 
   return (
     <Box sx={{
@@ -75,7 +75,8 @@ const Welcome = () => {
             color: '#8F8F8F',
             marginTop: '8px',
           }}>{t('description')} 👀</span>
-          <WalletConnectButton onConnect={onConnect}/>
+          {/*<WalletConnectButton onConnect={onConnect}/>*/}
+          <WalletConnectButton/>
         </Box>
       </Box>
     </Box>
