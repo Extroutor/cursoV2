@@ -11,14 +11,17 @@ const metadata = {
     icons: [''], // TODO: Add logo
 };
 
+export const projectId = '16f460d50c25a91446f494e58c3999e7'
+export const infuraId = "28aaa049f7f14880b375f80295d02142"
+
 const connectors: CreateConnectorFn[] = [];
-connectors.push(walletConnect({ projectId:'16f460d50c25a91446f494e58c3999e7', metadata, showQrModal: false })); // showQrModal must be false
+connectors.push(walletConnect({ projectId: projectId, metadata, showQrModal: false })); // showQrModal must be false
 connectors.push(injected({ shimDisconnect: true }));
 connectors.push(metaMask({ dappMetadata: metadata })); // for mobile connection
 
 export const wagmiAdapter = new WagmiAdapter({
     ssr: true,
-    projectId: '16f460d50c25a91446f494e58c3999e7',
+    projectId: infuraId,
     // networks: [polygon],
     networks: [polygonAmoy],
     connectors,

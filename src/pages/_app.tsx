@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // import StreamDataUpdater from '../components/Stream/StreamsDataUpdater'
 import { createAppKit } from '@reown/appkit/react'
 import { polygonAmoy } from '@reown/appkit/networks'
-import {wagmiAdapter} from "../../wagmi-config"
+import {infuraId, wagmiAdapter} from "../../wagmi-config"
 
 
 const queryClient = new QueryClient();
@@ -24,7 +24,7 @@ const metadata = {
 // Create the modal
 createAppKit({
   adapters: [wagmiAdapter],
-  projectId: '16f460d50c25a91446f494e58c3999e7',
+  projectId: infuraId,
   // networks: [polygon],
   networks: [polygonAmoy],
   // defaultNetwork: polygon,
