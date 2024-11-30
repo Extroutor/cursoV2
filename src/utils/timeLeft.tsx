@@ -1,7 +1,14 @@
-export function timeLeft(endDate: string | number) {
+export function timeLeft(endDate: string | number ) {
   // Convert endDate to a Date object
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const endDateTime = new Date(endDate * 1000)
+  const endDateNumeric = typeof endDate === 'string' ? Number(endDate) : endDate;
+
+  if (isNaN(endDateNumeric)) {
+    throw new Error('Invalid endDate: must be a number or a string that can be converted to a number');
+  }
+
+  // Преобразуем endDate в объект Date
+  const endDateTime = new Date(endDateNumeric * 1000);
 
   // Get the current time
   const now = new Date();
