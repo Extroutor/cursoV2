@@ -5,7 +5,7 @@ import {useEffect, useState} from "react"
 import {SubtitleTypography} from "../Typography/SubtitleTypography.tsx"
 
 const RecentStreamList = () => {
-    const [groupedStream, setGroupedStream] = useState({})
+    const [groupedStream, setGroupedStream] = useState(null)
     const {streams} = useStreams()
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const RecentStreamList = () => {
                         margin: 0,
                     }}>
                         {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
-                        {groupedStream[date].map((stream) => (
+                        {groupedStream[date]?.map((stream) => (
                             <RecentStreamItem key={stream.id} stream={stream}/>
                         ))}
                     </ul>
