@@ -4,7 +4,7 @@ import {MaticABI, MaticToken, USDCABI, USDCToken} from "@/blockchain/constraints
 import {AddressType} from "@/types/system.ts";
 
 const useAccountBalance = (address: AddressType, token: 'usdc' | 'matic') => {
-  const [balance, setBalance] = useState(null)
+  const [balance, setBalance] = useState<number>(null)
   const [balanceLoading, setBalanceLoading] = useState(true)
 
   useEffect(() => {
