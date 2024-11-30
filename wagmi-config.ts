@@ -1,5 +1,3 @@
-import {CreateConnectorFn} from 'wagmi';
-import { walletConnect, injected, metaMask } from 'wagmi/connectors';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { polygonAmoy } from '@reown/appkit/networks';
 import { createPublicClient, http as Vhttp } from 'viem';
