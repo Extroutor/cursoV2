@@ -33,7 +33,7 @@ createAppKit({
   features: {
     socials: ['google', 'apple'],
   },
-});
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
