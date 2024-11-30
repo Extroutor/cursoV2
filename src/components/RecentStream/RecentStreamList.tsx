@@ -5,7 +5,7 @@ import {useEffect, useState} from "react"
 import {SubtitleTypography} from "../Typography/SubtitleTypography.tsx"
 
 const RecentStreamList = () => {
-    const [groupedStream, setGroupedStream] = useState(null)
+    const [groupedStream, setGroupedStream] = useState({})
     const {streams} = useStreams()
 
     useEffect(() => {
