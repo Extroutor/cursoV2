@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react'
 import {getAccountBalance} from "@/blockchain/getBalance.ts"
 import {MaticABI, MaticToken, USDCABI, USDCToken} from "@/blockchain/constraints.ts"
+import {AddressType} from "@/types/system.ts";
 
-const useAccountBalance = (address: string, token: 'usdc' | 'matic') => {
+const useAccountBalance = (address: AddressType, token: 'usdc' | 'matic') => {
   const [balance, setBalance] = useState(null)
   const [balanceLoading, setBalanceLoading] = useState(true)
 
