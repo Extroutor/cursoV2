@@ -12,7 +12,7 @@ export const metadata = {
     icons: [''], // TODO: Add logo
 };
 
-export const projectId = '08ec41a934f82d1db339a13e0115be6a'
+export const projectId = "16f460d50c25a91446f494e58c3999e7" //'08ec41a934f82d1db339a13e0115be6a'
 // export const infuraId = "28aaa049f7f14880b375f80295d02142"
 
 const connectors: CreateConnectorFn[] = [];
