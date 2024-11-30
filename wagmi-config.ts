@@ -6,6 +6,10 @@ import { createPublicClient, http as Vhttp } from 'viem';
 
 export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
 
+if (!projectId) {
+    throw new Error('PROJECT_ID is not defined');
+}
+
 const metadata = {
     name: 'Curso',
     description: 'Powered by Curso',
@@ -25,14 +29,13 @@ export const wagmiAdapter = new WagmiAdapter({
     networks: [polygonAmoy],
     connectors,
     transports: {
-        [polygonAmoy.id]: http( process.env.NEXT_PUBLIC_INFURA_API_URL_AMOY),
+        [polygonAmoy.id]: http(process.env.NEXT_PUBLIC_INFURA_API_URL_AMOY),
     },
 });
 
 export const publicClient = createPublicClient({
     chain: polygonAmoy,
-    transport: Vhttp( process.env.NEXT_PUBLIC_INFURA_API_URL_AMOY),
+    transport: Vhttp(process.env.NEXT_PUBLIC_INFURA_API_URL_AMOY),
 });
-
 
 export const config = wagmiAdapter.wagmiConfig;
