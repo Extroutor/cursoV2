@@ -1,4 +1,4 @@
-import {CreateConnectorFn, fallback, http, webSocket} from 'wagmi';
+import {CreateConnectorFn} from 'wagmi';
 import { walletConnect, injected, metaMask } from 'wagmi/connectors';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { polygonAmoy } from '@reown/appkit/networks';
@@ -21,18 +21,18 @@ connectors.push(metaMask({ dappMetadata: metadata })); // for mobile connection
 
 export const wagmiAdapter = new WagmiAdapter({
     ssr: true,
-    projectId: infuraId,
+    projectId: projectId,
     // networks: [polygon],
     networks: [polygonAmoy],
     connectors,
-    transports: {
-        // [polygonAmoy.id]: http("https://polygon-amoy.infura.io/v3/28aaa049f7f14880b375f80295d02142"),
-        [polygonAmoy.id]: fallback([
-            webSocket("wss://polygon-amoy.infura.io/ws/v3/28aaa049f7f14880b375f80295d02142" as string),
-            http("https://polygon-amoy.infura.io/v3/28aaa049f7f14880b375f80295d02142" as string),
-        ]),
-
-    },
+    // transports: {
+    //     // [polygonAmoy.id]: http("https://polygon-amoy.infura.io/v3/28aaa049f7f14880b375f80295d02142"),
+    //     [polygonAmoy.id]: fallback([
+    //         webSocket("wss://polygon-amoy.infura.io/ws/v3/28aaa049f7f14880b375f80295d02142" as string),
+    //         http("https://polygon-amoy.infura.io/v3/28aaa049f7f14880b375f80295d02142" as string),
+    //     ]),
+    //
+    // },
 });
 
 export const publicClient = createPublicClient({
