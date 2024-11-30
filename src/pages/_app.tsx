@@ -6,37 +6,46 @@ import '../styles/index.css'
 import {WagmiProvider} from 'wagmi'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // import StreamDataUpdater from '../components/Stream/StreamsDataUpdater'
-import { createAppKit } from '@reown/appkit/react'
-import { polygonAmoy } from '@reown/appkit/networks'
-import {metadata, projectId, wagmiAdapter} from "../../wagmi-config"
+// import { createAppKit } from '@reown/appkit/react'
+// import { polygonAmoy } from '@reown/appkit/networks'
+import {config} from "../../wagmi-config"
+import {RainbowKitProvider} from "@rainbow-me/rainbowkit";
 
 const queryClient = new QueryClient()
 
 // Create the modal
-createAppKit({
-  adapters: [wagmiAdapter],
-  projectId: projectId,
-  // networks: [polygon],
-  networks: [polygonAmoy],
-  // defaultNetwork: polygon,
-  defaultNetwork: polygonAmoy,
-  metadata: metadata,
-  // features: {
-  //   socials: ['google', 'apple'],
-  // },
-})
+// createAppKit({
+//   adapters: [wagmiAdapter],
+//   projectId: projectId,
+//   // networks: [polygon],
+//   networks: [polygonAmoy],
+//   // defaultNetwork: polygon,
+//   defaultNetwork: polygonAmoy,
+//   metadata: metadata,
+//   // features: {
+//   //   socials: ['google', 'apple'],
+//   // },
+// })
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    // <Provider store={store}>
+    //   <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+    //     <QueryClientProvider client={queryClient}>
+    //       {/*<StreamDataUpdater />*/}
+    //       <Component {...pageProps} />
+    //     </QueryClientProvider>
+    //   </WagmiProvider>
+    // </Provider>
     <Provider store={store}>
-      <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+      <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
-          {/*<StreamDataUpdater />*/}
-          <Component {...pageProps} />
+          <RainbowKitProvider>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
         </QueryClientProvider>
       </WagmiProvider>
     </Provider>
-
   );
 }
 
