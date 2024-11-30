@@ -70,8 +70,8 @@ export const getPermitSignature = async (
     };
 
     // walletClient directly to sign
-    const signature = await walletClient.signTypedData({
-      account,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const signature: any = await walletClient.signTypedData({
       domain,
       types,
       primaryType: 'Permit',
