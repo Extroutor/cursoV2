@@ -78,7 +78,8 @@ const Welcome = () => {
           }}>{t('description')} 👀</span>
           <WalletConnectButton onConnect={onConnect}/>
           {/*<WalletConnectButton/>*/}
-        </Box>
+          <appkit-button />
+          </Box>
       </Box>
     </Box>
   )
