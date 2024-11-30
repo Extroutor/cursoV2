@@ -51,7 +51,7 @@ import {createPublicClient, http} from 'viem'
 
 export const config = getDefaultConfig({
     appName: 'Curso',
-    projectId: '16f460d50c25a91446f494e58c3999e7',
+    projectId: '08ec41a934f82d1db339a13e0115be6a',
     chains: [polygonAmoy],
     ssr: false,
 });
