@@ -15,7 +15,7 @@ export function timeLeft(endDate: string | number ) {
 
   // Calculate the difference between the two times
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const timeDiff = endDateTime - now
+  const timeDiff = endDateTime.getTime() - now.getTime();
 
   // Calculate the time left in hours, minutes, and seconds
   const hours = Math.floor(timeDiff / (1000 * 60 * 60))
