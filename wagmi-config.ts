@@ -48,9 +48,15 @@ import {polygon, polygonAmoy} from 'wagmi/chains'
 import {createPublicClient, http} from 'viem'
 import {mainnet} from 'viem/chains'
 
+export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
+
+if (!projectId) {
+    throw new Error('PROJECT_ID is not defined');
+}
+
 export const config = getDefaultConfig({
     appName: 'Curso',
-    projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+    projectId: projectId,
     chains: [polygon, mainnet, polygonAmoy],
     ssr: true,
 });
