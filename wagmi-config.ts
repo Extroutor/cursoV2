@@ -44,7 +44,7 @@
 import '@rainbow-me/rainbowkit/styles.css'
 import {getDefaultConfig} from '@rainbow-me/rainbowkit'
 import {polygon, polygonAmoy} from 'wagmi/chains'
-import {QueryClient} from "@tanstack/react-query"
+// import {QueryClient} from "@tanstack/react-query"
 import {createPublicClient, http} from 'viem'
 import {mainnet} from 'viem/chains'
 
