@@ -48,15 +48,15 @@ import {polygon, polygonAmoy} from 'wagmi/chains'
 import {createPublicClient, http} from 'viem'
 import {mainnet} from 'viem/chains'
 
-export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
-
-if (!projectId) {
-    throw new Error('PROJECT_ID is not defined');
-}
+// export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
+//
+// if (!projectId) {
+//     throw new Error('PROJECT_ID is not defined');
+// }
 
 export const config = getDefaultConfig({
     appName: 'Curso',
-    projectId: projectId,
+    projectId: "16f460d50c25a91446f494e58c3999e7",
     chains: [polygon, mainnet, polygonAmoy],
     ssr: true,
 });
@@ -64,7 +64,7 @@ export const config = getDefaultConfig({
 
 export const publicClient = createPublicClient({
     chain: polygonAmoy,
-    transport: http(process.env.NEXT_PUBLIC_INFURA_API_URL_AMOY),
+    transport: http("https://polygon-amoy.infura.io/v3/28aaa049f7f14880b375f80295d02142"),
 })
 
 // export const queryClient = new QueryClient();

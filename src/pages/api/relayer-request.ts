@@ -13,9 +13,12 @@ export default async function handler(
       res.status(400).json({error: 'Missing required fields'});
     }
 
+
+    console.log("process.env.RELAYER_API_KEY_AMOY", process.env.RELAYER_API_KEY_AMOY)
+
     const credentials = {
-      relayerApiKey: process.env.RELAYER_API_KEY_AMOY as string, // AMOY
-      relayerApiSecret: process.env.RELAYER_SECRET_KEY_AMOY as string, // AMOY
+      relayerApiKey: "2yYtrjB2EgqtNB3sS7zDjCuS4UHh9rhy" as string, // AMOY
+      relayerApiSecret: "2KiWvXusjUJ3fmYmZVbhkA2hxnbb2zxiMf5fStk2EP5T8PoK2hrvMEKCw9heEtpm" as string, // AMOY
     };
 
     // only with ethers (from official docs)
