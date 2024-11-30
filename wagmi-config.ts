@@ -55,6 +55,7 @@ export const config = getDefaultConfig({
     ssr: true,
 });
 
+
 export const publicClient = createPublicClient({
     chain: polygonAmoy,
     transport: http(process.env.NEXT_PUBLIC_INFURA_API_URL_AMOY),
