@@ -12,7 +12,7 @@ const metadata = {
 };
 
 export const projectId = '16f460d50c25a91446f494e58c3999e7'
-export const infuraId = "28aaa049f7f14880b375f80295d02142"
+// export const infuraId = "28aaa049f7f14880b375f80295d02142"
 
 const connectors: CreateConnectorFn[] = [];
 connectors.push(walletConnect({ projectId: projectId, metadata, showQrModal: false })); // showQrModal must be false
