@@ -10,16 +10,7 @@ import { createAppKit } from '@reown/appkit/react'
 import { polygonAmoy } from '@reown/appkit/networks'
 import {metadata, projectId, wagmiAdapter} from "../../wagmi-config"
 
-
-const queryClient = new QueryClient();
-
-// Set up metadata
-// const metadata = {
-//   name: 'Curso',
-//   description: 'AppKit Example - Powered by Curso',
-//   url: 'https://curso.finance', // origin must match your domain & subdomain
-//   icons: [''], // TODO: Add logo
-// };
+const queryClient = new QueryClient()
 
 // Create the modal
 createAppKit({
