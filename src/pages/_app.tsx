@@ -11,6 +11,7 @@ import { createAppKit } from '@reown/appkit/react'
 import {metadata, projectId, wagmiAdapter} from "../../wagmi-config"
 import {polygonAmoy} from "@reown/appkit/networks";
 // import {RainbowKitProvider} from "@rainbow-me/rainbowkit";
+import './../i18n';
 
 
 // Create the modal
@@ -30,6 +31,17 @@ createAppKit({
 const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
+  // const [lang, setLang] = useState( )
+  // useEffect(() => {
+  //   const language = localStorage.getItem('lang')
+  //   if (language)
+  //     setLang(language)
+  //   else {
+  //     localStorage.setItem('lang', "en")
+  //     setLang("en")
+  //   }
+  // }, []);
+
   return (
     <Provider store={store}>
       <WagmiProvider config={wagmiAdapter.wagmiConfig}>

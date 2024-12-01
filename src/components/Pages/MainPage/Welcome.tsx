@@ -6,11 +6,11 @@ import {connectHandler} from "@/utils/connectHandler"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
 import Image from 'next/image';
-import { useTranslation } from 'next-i18next'
 import {WalletConnectButton} from "@/components/WalletConnectButton.tsx"
+import {useTranslation} from "react-i18next";
 
 const Welcome = () => {
-  const {t} = useTranslation("common")
+  const { t } = useTranslation();
   const {address, isConnected: isConnect} = useAppKitAccount();
   const {open} = useAppKit()
   const {disconnect} = useDisconnect()
@@ -74,10 +74,10 @@ const Welcome = () => {
           <span style={{
             color: '#8F8F8F',
             marginTop: '8px',
-          }}>{t('description')} 👀</span>
+          }}>{t('welcome:description')} 👀</span>
           <WalletConnectButton onConnect={onConnect}/>
           {/*<WalletConnectButton/>*/}
-          <appkit-button />
+          {/*<appkit-button />*/}
           </Box>
       </Box>
     </Box>
