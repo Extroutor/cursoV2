@@ -40,13 +40,13 @@ const Welcome = () => {
 
         borderRadius: '20px',
         bgcolor: '#F4F4F4',
-        // height: 'calc(100vh - 100px)',
+        height: 'calc(100vh - 82px)',
         position: 'relative',
         minHeight: '100%'
       }}>
         <Box sx={{
           width: '100%',
-          height: '100%'
+          // height: '100vh'
         }}>
           <Image
             src={mainImg}
