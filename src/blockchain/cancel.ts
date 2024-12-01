@@ -49,15 +49,16 @@ import {encodeFunctionData} from 'viem';
 import {config, publicClient} from "../../wagmi-config.ts";
 import {streamContractABI, streamContractAddress} from "@/blockchain/constraints.ts";
 import {signMetaTxRequest} from "@/blockchain/signMetaTxRequest.ts";
-import {AddressType} from "@/types/system.ts";
 import {isLoading} from "@/store/reducers/uiReducer.tsx";
 
 export type MetaTxData = {
-  to: AddressType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  to: any;
   data: string;
   deadline: number;
   gas: string;
-  from: AddressType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  from: any;
 };
 
 
