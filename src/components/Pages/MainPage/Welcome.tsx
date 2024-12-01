@@ -40,7 +40,7 @@ const Welcome = () => {
 
         borderRadius: '20px',
         bgcolor: '#F4F4F4',
-        height: 'calc(100vh - 94px)',
+        height: 'calc(100vh - 104px)',
         position: 'relative',
         minHeight: '100%'
       }}>
