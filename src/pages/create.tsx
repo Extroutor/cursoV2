@@ -24,7 +24,7 @@ import {signMetaTxRequest} from "@/blockchain/signMetaTxRequest.ts"
 import {useRouter} from "next/router"
 import Layout from "@/components/Layout"
 import {useTranslation} from 'next-i18next'
-import useStreams from "@/hooks/useStreams.tsx";
+// import useStreams from "@/hooks/useStreams.tsx";
 
 const CreateStreamPage = () => {
   const record = {
