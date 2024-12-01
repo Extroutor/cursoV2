@@ -7,18 +7,16 @@ import Layout from "@/components/Layout"
 
 const MainPage = () => {
   return (
-    <Layout>
       <Box sx={{
         display: 'block',
         padding: '0 20px 20px',
-        // minHeight: '100%',
+        minHeight: '100%',
         boxSizing: 'border-box',
         height: '100%',
       }}>
         <HeaderComponent />
         <MainComponent/>
       </Box>
-    </Layout>
   )
 }
 
@@ -31,9 +29,9 @@ const MainComponent = () => {
   const address = useSelector((state: any) => state.user.address)
 
   return (
-    <>
+    <Layout>
       {address ? <MainPageContent/> : <Welcome/>}
-    </>
+    </Layout>
   )
 };
 export default MainPage

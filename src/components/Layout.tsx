@@ -33,7 +33,8 @@ const Layout = ({children}: any) => {
 
   return (
     <Box sx={{
-      height: 'calc(100vh - 64px)',
+      // height: 'calc(100vh - 64px)',
+      height: '100%',
       minHeight: '548px',
       maxWidth: '800px',
       margin: '0 auto'
