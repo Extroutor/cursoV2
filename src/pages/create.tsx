@@ -159,10 +159,10 @@ const CreateStreamForm = () => {
           });
 
           const responseData = await response.json();
-
+        console.log('responseData', responseData)
           if (responseData.success) {
             setOpenStartModal(false)
-            fetchStreams()
+            // fetchStreams()
             // setCreateStreamError(false);
 
             // dispatch(getData(1, true) as any);

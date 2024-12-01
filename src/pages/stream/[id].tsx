@@ -8,6 +8,7 @@ import {getStreamDataById} from "@/blockchain/streams"
 import Progress from "@/components/Pages/StreamPage/Progress"
 import Header from "@/components/Pages/StreamPage/Header"
 import {useRouter} from "next/router";
+import Layout from "@/components/Layout.tsx";
 
 const StreamPage = () => {
   const router = useRouter()
@@ -30,7 +31,7 @@ const StreamPage = () => {
   }, [isDataLoading])
 
   return (
-    <>
+    <Layout>
       {!isDataLoading && data
         &&
           <>
@@ -41,7 +42,7 @@ const StreamPage = () => {
               </Box>
           </>
       }
-    </>
+    </Layout>
   )
 }
 

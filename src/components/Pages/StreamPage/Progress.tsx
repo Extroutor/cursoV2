@@ -8,6 +8,8 @@ import {timeLeft} from "@/utils/timeLeft";
 import Clock from "@/icons/clock.tsx";
 // import {cancelStream} from "@/blockchain/cancel.ts";
 import {parseDateTime} from "@/utils/dateTimeParser";
+import {cancelStream} from "@/blockchain/cancel.ts";
+import {useDispatch} from "react-redux";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Progress = ({data}: { data: any }) => {
     const [progressType, setProgressType] = useState(0)
@@ -15,6 +17,7 @@ const Progress = ({data}: { data: any }) => {
     const [withdrawProgress, setWithdrawProgress] = useState<number>(0)
     const counterpartyAddress = data.amIRecipient ? data.address_from : data.address_to
     const [dateTimeLeft, setDateTimeLeft] = useState<string | undefined>('')
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -46,7 +49,8 @@ const Progress = ({data}: { data: any }) => {
     }, [stream])
 
     const cancelStreamSubmit = async () => {
-        // await cancelStream(Number(data.id))
+        console.log('data.id', data.id)
+        await cancelStream(Number(data.id), dispatch)
     }
 
     const canICancel: boolean = (data.whoCancel === 0)
