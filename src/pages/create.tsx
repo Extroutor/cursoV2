@@ -63,7 +63,7 @@ const CreateStreamForm = () => {
   const [step, setStep] = useState(0)
   const [openStartModal, setOpenStartModal] = useState(false)
   const {getValues} = useFormContext()
-  const {fetchStreams} = useStreams()
+  // const {fetchStreams} = useStreams()
   const changeStepHandler = () => {
     if (step === 0) setStep(1)
     else setStep(2)

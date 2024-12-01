@@ -64,6 +64,7 @@ export type MetaTxData = {
 export const cancelStream = async (
   streamId: number,
   // setLoading: Function,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dispatch: any,
   // router: any
 ) => {
