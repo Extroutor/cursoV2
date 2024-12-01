@@ -8,7 +8,7 @@ const MainPageContent = () => {
   const {streams, processedStream} = useStreams()
 
   return (
-    <Box mt='54px' mb='94px'>
+    <Box mt='54px' mb='74px'>
       <WalletBalance buyCrypto={false}/>
       <ProcessedStream streams={processedStream}/>
       {/*<PlannedStream/>*/}

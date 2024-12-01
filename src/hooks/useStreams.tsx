@@ -19,39 +19,39 @@ const useStreams = () => {
     }, [address])
 
     useEffect(() => {
-        const fetchStreams = async () => {
-            dispatch(isLoading(true))
-            try {
-                const streamCount = Number(await getCount(address))
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const streamPromises: any[] = [] //Promise<any>[]
-
-                for (let i = 0; i < streamCount; i++) {
-                    const streamPromise = getStreamDataByIndex(address, i)
-                    streamPromises.push(streamPromise)
-                }
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const streams: any = await Promise.all(streamPromises)
-                console.log('streams', streams)
-                setStreams(streams)
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                setProcessedStream(streams.filter((stream: any) => stream.status === 0 && stream.end_date > Date.now()) || [])
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                setRecentStream(streams.filter((stream: any) => stream.status === 0 && stream.end_date < Date.now()) || [])
-
-            } catch (error) {
-                console.error(error)
-            } finally {
-                dispatch(isLoading(false))
-            }
-        }
-
         if (addressLoaded) {
             fetchStreams()
         }
     }, [addressLoaded])
 
-    return {streams, processedStream, recentStream}
+    const fetchStreams = async () => {
+        dispatch(isLoading(true))
+        try {
+            const streamCount = Number(await getCount(address))
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const streamPromises: any[] = [] //Promise<any>[]
+
+            for (let i = 0; i < streamCount; i++) {
+                const streamPromise = getStreamDataByIndex(address, i)
+                streamPromises.push(streamPromise)
+            }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const streams: any = await Promise.all(streamPromises)
+            console.log('streams', streams)
+            setStreams(streams)
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            setProcessedStream(streams.filter((stream: any) => stream.status === 0 && stream.end_date > Date.now()) || [])
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            setRecentStream(streams.filter((stream: any) => stream.status === 0 && stream.end_date < Date.now()) || [])
+
+        } catch (error) {
+            console.error(error)
+        } finally {
+            dispatch(isLoading(false))
+        }
+    }
+
+    return {streams, processedStream, recentStream, fetchStreams}
 };
 
 

@@ -24,6 +24,7 @@ import {signMetaTxRequest} from "@/blockchain/signMetaTxRequest.ts"
 import {useRouter} from "next/router"
 import Layout from "@/components/Layout"
 import {useTranslation} from 'next-i18next'
+import useStreams from "@/hooks/useStreams.tsx";
 
 const CreateStreamPage = () => {
   const record = {
@@ -62,7 +63,7 @@ const CreateStreamForm = () => {
   const [step, setStep] = useState(0)
   const [openStartModal, setOpenStartModal] = useState(false)
   const {getValues} = useFormContext()
-
+  const {fetchStreams} = useStreams()
   const changeStepHandler = () => {
     if (step === 0) setStep(1)
     else setStep(2)
@@ -161,7 +162,9 @@ const CreateStreamForm = () => {
 
           if (responseData.success) {
             setOpenStartModal(false)
+            fetchStreams()
             // setCreateStreamError(false);
+
             // dispatch(getData(1, true) as any);
             router?.push('/');
           } else {
