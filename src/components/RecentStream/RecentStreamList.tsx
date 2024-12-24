@@ -9,22 +9,30 @@
         [date: string]: any[]
     }
     const RecentStreamList = () => {
-        const [groupedStream, setGroupedStream] = useState<GroupedStream>({})
-        const {streams} = useStreams()
+        const [groupedStream, setGroupedStream] = useState<GroupedStream>({});
+        const { streams } = useStreams();
 
         useEffect(() => {
             const groupByDate = () => {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const grouped: any = {}
+                const grouped: any = {};
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 streams.forEach((transaction: any) => {
                     const date = new Date(transaction.start_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
                     if (!grouped[date]) {
                         grouped[date] = []
                     }
-                    grouped[date].push(transaction)
-                })
-                setGroupedStream(grouped)
+                    grouped[date].unshift(transaction)
+                });
+
+                const reversedGrouped = Object.keys(grouped)
+                  .sort((a, b) => new Date(b) - new Date(a))
+                  .reduce((acc, key) => {
+                      acc[key] = grouped[key]
+                      return acc
+                  }, {})
+
+                setGroupedStream(reversedGrouped)
             }
 
             groupByDate()
