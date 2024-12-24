@@ -6,8 +6,9 @@ import {useAppKit, useAppKitAccount} from '@reown/appkit/react'
 import {WalletConnectButton} from "@/components/WalletConnectButton.tsx"
 import {useDispatch} from "react-redux"
 import {connectHandler} from "@/utils/connectHandler.ts"
+import ProgressTab from "@/components/Pages/MainPage/ProgressTab.tsx";
 
-const Step = ({item, setState}) => {
+const Step = ({item, step, setState}) => {
   const {address, isConnected: isConnect} = useAppKitAccount()
   const {open} = useAppKit()
   const {disconnect} = useDisconnect()
@@ -32,6 +33,7 @@ const Step = ({item, setState}) => {
       minHeight: '100%',
       display: 'block',
     }}>
+      <ProgressTab count={5} active={step}/>
       <Box sx={{
         display: 'flex',
         justifyContent: 'center',
@@ -58,55 +60,64 @@ const Step = ({item, setState}) => {
           {item?.description}
         </Box>
         <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 1,
-          marginTop: '24px',
+          position: 'absolute',
+          bottom: 0,
+          // width: '100%',
+          left: 0,
+          right: 0,
+          padding: '24px 20px',
+          bgcolor: '#fff',
         }}>
-          {item.connect
-            ?
-            <>
-              <WalletConnectButton onConnect={onConnect}/>
-              <Box sx={{
-                color: '#8F8F8F',
-                fontSize: '14px',
-                width: '100%',
-                textAlign: 'center',
-                padding: '10px 0',
-                cursor: 'pointer'
-              }}>Take a look around</Box>
-            </>
-            :
-            <>
-              <Box sx={{
-                borderRadius: '100px',
-                backgroundColor: '#56AAC8',
-                width: '100%',
-                padding: '10px 0',
-                fontWeight: '500',
-                fontFamily: 'HarmonyOS Sans, serif',
-                fontSize: '16px',
-                textAlign: 'center',
-                border: 'none',
-                outline: 'none',
-                color: '#fff',
-                cursor: 'pointer',
-              }}
-                   onClick={() => {
-                     console.log('click')
-                     setState((step) => step + 1)
-                   }}
-              >Next</Box>
-              <Box sx={{
-                color: '#8F8F8F',
-                fontSize: '14px',
-                width: '100%',
-                textAlign: 'center',
-                padding: '10px 0',
-                cursor: 'pointer'
-              }}>Skip</Box>
-            </>
-          }
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 1,
+          }}>
+            {item.connect
+              ?
+              <>
+                <WalletConnectButton onConnect={onConnect}/>
+                <Box sx={{
+                  color: '#8F8F8F',
+                  fontSize: '14px',
+                  width: '100%',
+                  textAlign: 'center',
+                  padding: '10px 0',
+                  cursor: 'pointer'
+                }}>Take a look around</Box>
+              </>
+              :
+              <>
+                <Box sx={{
+                  borderRadius: '100px',
+                  backgroundColor: '#56AAC8',
+                  width: '100%',
+                  padding: '10px 0',
+                  fontWeight: '500',
+                  fontFamily: 'HarmonyOS Sans, serif',
+                  fontSize: '16px',
+                  textAlign: 'center',
+                  border: 'none',
+                  outline: 'none',
+                  color: '#fff',
+                  cursor: 'pointer',
+                }}
+                     onClick={() => {
+                       console.log('click')
+                       setState((step) => step + 1)
+                     }}
+                >Next</Box>
+                <Box sx={{
+                  color: '#8F8F8F',
+                  fontSize: '14px',
+                  width: '100%',
+                  textAlign: 'center',
+                  padding: '10px 0',
+                  cursor: 'pointer'
+                }}>Skip</Box>
+              </>
+            }
+          </Box>
         </Box>
       </Box>
     </Box>

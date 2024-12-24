@@ -5,6 +5,7 @@ import img2 from "@/icons/welcome/curso2.svg"
 import img3 from "@/icons/welcome/curso3.svg"
 import img4 from "@/icons/welcome/curso4.svg"
 import img5 from "@/icons/welcome/curso5.svg"
+import {Box} from "@mui/material";
 
 type StepType = {
   step: number,
@@ -70,7 +71,8 @@ const Intro = () => {
 
   return (
     <>
-      {stepObj && <Step item={stepObj} setState={setStep}/>}
+
+      {stepObj && <Step item={stepObj} step={step} setState={setStep}/>}
     </>
   )
 }
