@@ -7,12 +7,16 @@ import {WalletConnectButton} from "@/components/WalletConnectButton.tsx"
 import {useDispatch} from "react-redux"
 import {connectHandler} from "@/utils/connectHandler.ts"
 import ProgressTab from "@/components/Pages/MainPage/ProgressTab.tsx";
+import {useRouter} from "next/router";
+import {showIntro} from "@/store/reducers/uiReducer.tsx";
+import {mockAddress} from "@/store/reducers/userReducer.ts";
 
 const Step = ({item, step, setState}) => {
   const {address, isConnected: isConnect} = useAppKitAccount()
   const {open} = useAppKit()
   const {disconnect} = useDisconnect()
   const dispatch = useDispatch()
+  const router = useRouter()
 
   useEffect(() => {
     if (address && isConnect) connectHandler(address, dispatch).then()
@@ -67,6 +71,8 @@ const Step = ({item, step, setState}) => {
           right: 0,
           padding: '24px 20px',
           bgcolor: '#fff',
+          maxWidth: '800px',
+          margin: '0 auto',
         }}>
           <Box sx={{
             display: 'flex',
@@ -84,7 +90,13 @@ const Step = ({item, step, setState}) => {
                   textAlign: 'center',
                   padding: '10px 0',
                   cursor: 'pointer'
-                }}>Take a look around</Box>
+                }}
+                     onClick={() => {
+                       router.push('/')
+                       dispatch(showIntro(false))
+                       dispatch(mockAddress())
+                     }}
+                >Take a look around</Box>
               </>
               :
               <>
@@ -103,7 +115,6 @@ const Step = ({item, step, setState}) => {
                   cursor: 'pointer',
                 }}
                      onClick={() => {
-                       console.log('click')
                        setState((step) => step + 1)
                      }}
                 >Next</Box>
@@ -114,7 +125,12 @@ const Step = ({item, step, setState}) => {
                   textAlign: 'center',
                   padding: '10px 0',
                   cursor: 'pointer'
-                }}>Skip</Box>
+                }}
+                     onClick={() => {
+                       router.push('/')
+                       dispatch(showIntro(false))
+                     }}
+                >Skip</Box>
               </>
             }
           </Box>

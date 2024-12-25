@@ -4,7 +4,8 @@ export const userReducer = createSlice({
     name: 'user',
     initialState: {
         address: '',
-        nickname: ''
+        nickname: '',
+        isConnect: false,
     },
     reducers: {
         addAddress: (state, action) => {
@@ -15,13 +16,18 @@ export const userReducer = createSlice({
             state.nickname = action.payload
             localStorage.setItem('nickname', action.payload)
         },
+        setConnection: (state, action) => {
+            state.isConnect = action.payload
+        },
         disconnectWallet: (state) => {
             state.address = ''
             state.nickname = ''
             localStorage.removeItem('address')
             localStorage.removeItem('nickname',)
-
         },
+        mockAddress: (state) => {
+            state.address = '1'
+        }
     },
 })
 
@@ -30,6 +36,8 @@ export const {
     addAddress,
     disconnectWallet,
     setNickname,
+    mockAddress,
+    setConnection,
 } = userReducer.actions
 
 export default userReducer.reducer

@@ -1,7 +1,8 @@
 import React from 'react';
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
+import { motion } from 'framer-motion';
 
-const ProgressTab = ({count, active}) => {
+const ProgressTab = ({ count, active }) => {
   return (
     <Box sx={{
       width: '100%',
@@ -14,12 +15,16 @@ const ProgressTab = ({count, active}) => {
         margin: '0 auto',
       }}>
         {Array(count).fill().map((_, index) => (
-          <Box
+          <motion.div
             key={index}
-            sx={{
+            initial={{ width: '6px', backgroundColor: '#E5E5E5' }}
+            animate={{
               width: index + 1 === active ? '32px' : '6px',
+              backgroundColor: index + 1 === active ? '#56AAC8' : '#E5E5E5',
+            }}
+            transition={{ duration: 0.3 }}
+            style={{
               height: '6px',
-              bgcolor: index + 1 === active ? '#56AAC8' : '#E5E5E5',
               borderRadius: '4px',
             }}
           />

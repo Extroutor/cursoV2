@@ -7,6 +7,7 @@ import Intro from "@/components/Pages/MainPage/Intro.tsx";
 
 const MainPage = () => {
   const address = useSelector((state: any) => state.user.address)
+  const showIntro = useSelector((state: any) => state.ui.intro)
 
   return (
       <Box sx={{
@@ -20,7 +21,7 @@ const MainPage = () => {
         {/*<Header title='CURSO'/>*/}
         {/*<MainComponent/>*/}
         <Layout>
-          {address ? <MainPageContent/> : false ? <Welcome/> : <Intro/>}
+          {address ? <MainPageContent/> : showIntro ? <Intro/> : <Welcome/>}
         </Layout>
       </Box>
   )

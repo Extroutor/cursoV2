@@ -70,10 +70,12 @@ const Intro = () => {
   }, [step])
 
   return (
-    <>
+    <Box sx={{
+      maxWidth: '800px'
+    }}>
 
       {stepObj && <Step item={stepObj} step={step} setState={setStep}/>}
-    </>
+    </Box>
   )
 }
 

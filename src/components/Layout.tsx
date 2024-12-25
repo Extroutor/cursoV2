@@ -13,6 +13,7 @@ const Layout = ({children}: any) => {
   const router = useRouter()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const address = useSelector((state: any) => state.user.address)
+  const isConnect = useSelector((state: any) => state.user.isConnect)
   const dispatch = useDispatch()
 
   useEffect(() => {

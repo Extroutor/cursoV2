@@ -12,6 +12,7 @@ import {useRouter} from "next/router"
 const Header = ({title}: { title: string }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const address = useSelector((state: any) => state.user.address)
+  const isConnect = useSelector((state: any) => state.user.isConnect)
   const location = useRouter()
   const dispatch = useDispatch()
   const {t} = useTranslation()
@@ -43,13 +44,13 @@ const Header = ({title}: { title: string }) => {
         </TitleTypography>)
         : (<TitleTypography>{title}</TitleTypography>)
       }
-      {location.pathname === '/wallet'
+      {location.pathname === '/wallet' && isConnect
         ? <Box sx={{height: '30px', cursor: 'pointer'}} onClick={disconnectHandler}><Exit/></Box>
         : location.pathname === '/settings'
           ? <></>
-          : location.pathname === '/history'
+          : location.pathname === '/history' && isConnect
             ? <Search/>
-            : <NotificationIcon/>
+            : isConnect && <NotificationIcon/>
       }
     </header>
   )
