@@ -6,7 +6,7 @@ import Loading from "./Modals/Loading"
 import Tooltip from "./Tooltip"
 import DisconnectModal from "./Modals/DisconnectModal"
 import {Box} from "@mui/material";
-import {addAddress, setNickname} from "@/store/reducers/userReducer";
+import {addAddress, setConnection, setNickname} from "@/store/reducers/userReducer";
 import {getNicknameByAddress} from "@/blockchain/nickname";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Layout = ({children}: any) => {
@@ -22,6 +22,7 @@ const Layout = ({children}: any) => {
 
     if (localStorageAddress) {
       dispatch(addAddress(localStorageAddress))
+      dispatch(setConnection(true))
       if (localStorageNickname) {
         dispatch(setNickname(localStorageNickname))
       } else {

@@ -9,6 +9,7 @@ import Image from 'next/image';
 import {WalletConnectButton} from "@/components/WalletConnectButton.tsx"
 import {useTranslation} from "react-i18next";
 import Header from "@/components/Header.tsx";
+import {setConnection} from "@/store/reducers/userReducer.ts";
 
 const Welcome = () => {
   const {t} = useTranslation();
@@ -25,7 +26,7 @@ const Welcome = () => {
 
   const onConnect = async () => {
     disconnect()
-    open()
+    open().then(() => dispatch(setConnection(true)))
   }
 
   return (

@@ -9,7 +9,7 @@ import {connectHandler} from "@/utils/connectHandler.ts"
 import ProgressTab from "@/components/Pages/MainPage/ProgressTab.tsx";
 import {useRouter} from "next/router";
 import {showIntro} from "@/store/reducers/uiReducer.tsx";
-import {mockAddress} from "@/store/reducers/userReducer.ts";
+import {mockAddress, setConnection} from "@/store/reducers/userReducer.ts";
 
 const Step = ({item, step, setState}) => {
   const {address, isConnected: isConnect} = useAppKitAccount()
@@ -26,7 +26,7 @@ const Step = ({item, step, setState}) => {
 
   const onConnect = async () => {
     disconnect()
-    open()
+    open().then(() => dispatch(setConnection(true)))
   }
 
   return (

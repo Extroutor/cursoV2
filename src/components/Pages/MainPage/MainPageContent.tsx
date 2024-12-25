@@ -10,7 +10,7 @@ import img from "@/icons/preview/curso1.svg"
 
 const MainPageContent = () => {
   const {streams, processedStream} = useStreams()
-  const isConnect = useSelector((state: any) => state.user.isConnec)
+  const isConnect = useSelector((state: any) => state.user.isConnect)
 
   return (
     <Box height='100%'>

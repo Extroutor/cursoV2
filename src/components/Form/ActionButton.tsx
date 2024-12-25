@@ -6,6 +6,7 @@ import {useDisconnect} from "wagmi";
 import {useDispatch, useSelector} from "react-redux";
 import {connectHandler} from "@/utils/connectHandler.ts";
 import {useAppKit, useAppKitAccount} from "@reown/appkit/react";
+import {setConnection} from "@/store/reducers/userReducer.ts";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ActionButton = ({step, changeStep, title}: { step?: number, changeStep: any, title: string }) => {
   const {
@@ -31,13 +32,29 @@ const ActionButton = ({step, changeStep, title}: { step?: number, changeStep: an
 
   const onConnect = async () => {
     disconnect()
-    open()
+    open().then(() => dispatch(setConnection(true)))
   }
+
+  console.log('isConnecting', isConnecting)
 
   return (
     <>
-      {!isConnecting && step !== 1
+      {!isConnecting && step === 1
         ?
+        <Box sx={{
+          position: 'absolute',
+          bottom: 0,
+          // width: '100%',
+          left: 0,
+          right: 0,
+          padding: '24px 20px',
+          bgcolor: '#fff',
+          maxWidth: '800px',
+          margin: '0 auto',
+        }}>
+          <WalletConnectButton onConnect={onConnect}/>
+        </Box>
+        :
         <Box sx={{
           position: 'fixed',
           bottom: '20px',
@@ -53,7 +70,7 @@ const ActionButton = ({step, changeStep, title}: { step?: number, changeStep: an
         >
           <Box sx={{
             backgroundColor: isDisabled ? '#E5E5E5' : '#56AAC8',
-            color: isDisabled ? '#8F8F8F' : '#292929',
+            color: isDisabled ? '#8F8F8F' : '#FFF',
             fontWeight: '500',
             fontSize: '16px',
             lineHeight: '18.75px',
@@ -63,20 +80,6 @@ const ActionButton = ({step, changeStep, title}: { step?: number, changeStep: an
           }}>
             {title}
           </Box>
-        </Box>
-        :
-        <Box sx={{
-          position: 'absolute',
-          bottom: 0,
-          // width: '100%',
-          left: 0,
-          right: 0,
-          padding: '24px 20px',
-          bgcolor: '#fff',
-          maxWidth: '800px',
-          margin: '0 auto',
-        }}>
-            <WalletConnectButton onConnect={onConnect}/>
         </Box>
       }
     </>

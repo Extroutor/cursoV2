@@ -6,6 +6,7 @@ import {useDisconnect} from "wagmi";
 import {useDispatch} from "react-redux";
 import {connectHandler} from "@/utils/connectHandler.ts";
 import {useAppKit, useAppKitAccount} from "@reown/appkit/react";
+import {setConnection} from "@/store/reducers/userReducer.ts";
 
 const Preview = ({img, title, description, connect}: {
   img: any,
@@ -26,7 +27,11 @@ const Preview = ({img, title, description, connect}: {
 
   const onConnect = async () => {
     disconnect()
-    open()
+    open().then(() => {
+      console.log('test')
+      console.log("address", address)
+      if (address && address !== '1') dispatch(setConnection(true))
+    })
   }
 
   return (
@@ -76,7 +81,7 @@ const Preview = ({img, title, description, connect}: {
             maxWidth: '800px',
             margin: '0 auto',
           }}>
-            <WalletConnectButton onConnect={onConnect}/>
+              <WalletConnectButton onConnect={onConnect}/>
           </Box>
           }
         </Box>

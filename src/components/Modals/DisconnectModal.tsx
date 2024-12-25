@@ -2,7 +2,7 @@ import {Box} from "@mui/material"
 import MainCustomModal from "./MainCustomModal.tsx"
 import {useDispatch, useSelector} from "react-redux"
 import {isLoading, showDisconnectModal} from "@/store/reducers/uiReducer.tsx"
-import {disconnectWallet} from "@/store/reducers/userReducer.ts"
+import {disconnectWallet, setConnection} from "@/store/reducers/userReducer.ts"
 import {useDisconnect} from "wagmi"
 import {useRouter} from "next/router"
 
@@ -21,6 +21,7 @@ const DisconnectModal = () => {
         setTimeout(async () => {
             await disconnectAsync().then(() => {
                 dispatch(disconnectWallet())
+                dispatch(setConnection(false))
                 localStorage.removeItem('address')
                 localStorage.removeItem('nickname')
                 closeHandler()
