@@ -6,7 +6,7 @@ export const uiReducer = createSlice({
     loading: false,
     isCopyTooltip: false,
     disconnectModal: false,
-    intro: true, // TODO
+    intro: false,
     tips: false,
   },
   reducers: {

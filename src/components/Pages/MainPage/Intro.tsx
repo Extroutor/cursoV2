@@ -60,20 +60,15 @@ const steps: StepType[] = [
 const Intro = () => {
   const [step, setStep] = useState(1)
   const [stepObj, setStepObj] = useState()
-  console.log("step", step)
-  console.log("stepObj", stepObj)
 
   useEffect(() => {
-    console.log("effect")
-    console.log("step2", step)
     setStepObj(steps.find(item => item.step === step))
+    if (step === 2)
+      localStorage.setItem('intro', 'shown')
   }, [step])
 
   return (
-    <Box sx={{
-      maxWidth: '800px'
-    }}>
-
+    <Box sx={{maxWidth: '800px'}}>
       {stepObj && <Step item={stepObj} step={step} setState={setStep}/>}
     </Box>
   )

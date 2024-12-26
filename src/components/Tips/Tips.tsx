@@ -2,9 +2,12 @@ import React, {useState} from 'react'
 import {Box} from "@mui/material"
 import {TipsModal} from "@/components/Tips/TipsModal.tsx"
 import Carousel from "@/components/Tips/Carousel.tsx"
+import {showTips} from "@/store/reducers/uiReducer.tsx";
+import {useDispatch} from "react-redux";
 
 const Tips = ({isOpen, setOpen}) => {
   const [step, setStep] = useState(0)
+  const dispatch = useDispatch()
 
   return (
     <TipsModal isOpen={isOpen} setOpen={setOpen}>
@@ -44,7 +47,8 @@ const Tips = ({isOpen, setOpen}) => {
             boxSizing: 'border-box',
             textAlign: 'center',
             mt: '30px',
-            lineHeight: '18.75px'
+            lineHeight: '18.75px',
+            cursor: 'pointer',
           }}
                onClick={() => {
                  setStep(1)
@@ -57,9 +61,12 @@ const Tips = ({isOpen, setOpen}) => {
             fontSize: '14px',
             marginTop: '18px',
             lineHeight: '16.41px',
-            marginBottom: '2px'
+            marginBottom: '2px',
+            cursor: 'pointer',
           }}
                 onClick={() => {
+                  dispatch(showTips(false))
+                  localStorage.setItem('tips', 'shown')
                 }}
           >Skip</span>
         </Box>

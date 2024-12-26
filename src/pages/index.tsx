@@ -6,20 +6,25 @@ import Layout from "@/components/Layout"
 import Intro from "@/components/Pages/MainPage/Intro.tsx"
 import Tips from "@/components/Tips/Tips.tsx"
 import {useEffect} from "react"
-import {showTips} from "@/store/reducers/uiReducer.tsx"
+import {showIntro, showTips} from "@/store/reducers/uiReducer.tsx"
 
 const MainPage = () => {
   const address = useSelector((state: any) => state.user.address)
-  const showIntro = useSelector((state: any) => state.ui.intro)
+  const intro = useSelector((state: any) => state.ui.intro)
   const tips = useSelector((state: any) => state.ui.tips)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const tips = localStorage.getItem('tips')
-    if (!tips)
+    const localTips = localStorage.getItem('tips')
+    const localIntro = localStorage.getItem('intro')
+
+    if (!localIntro) dispatch(showIntro(true))
+    else dispatch(showIntro(false))
+    if (!localTips)
       setTimeout(() => {
         dispatch(showTips(true))
       }, 3000)
+    else dispatch(showTips(false))
   }, [dispatch])
 
   const setOpenTips = () => dispatch(showTips(true))
@@ -33,7 +38,7 @@ const MainPage = () => {
       height: '100%',
     }}>
       <Layout>
-        {address ? <MainPageContent/> : showIntro ? <Intro/> : <Welcome/>}
+        {address ? <MainPageContent/> : intro ? <Intro/> : <Welcome/>}
       </Layout>
       {tips && <Tips isOpen={tips} setOpen={setOpenTips}/>}
     </Box>
