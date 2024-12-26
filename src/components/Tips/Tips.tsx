@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 import {Box} from "@mui/material"
-import {TipsModal} from "@/components/Tips/TipsModal.tsx";
-import Carousel from "@/components/Tips/Carousel.tsx";
+import {TipsModal} from "@/components/Tips/TipsModal.tsx"
+import Carousel from "@/components/Tips/Carousel.tsx"
 
-const Tips = () => {
+const Tips = ({isOpen, setOpen}) => {
   const [step, setStep] = useState(0)
 
   return (
-    <TipsModal isOpen={true} setOpen={() => {
-    }}
-    >
+    <TipsModal isOpen={isOpen} setOpen={setOpen}>
       {step === 0 ? <Box sx={{
           bgcolor: '#FFF',
           position: 'fixed',

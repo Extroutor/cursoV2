@@ -6,7 +6,8 @@ export const uiReducer = createSlice({
     loading: false,
     isCopyTooltip: false,
     disconnectModal: false,
-    intro: true // TODO
+    intro: true, // TODO
+    tips: false,
   },
   reducers: {
     isLoading: (state, action) => {
@@ -20,6 +21,9 @@ export const uiReducer = createSlice({
     },
     showIntro: (state, action) => {
       state.intro = action.payload
+    },
+    showTips: (state, action) => {
+      state.tips = action.payload
     }
   },
 })
@@ -29,7 +33,8 @@ export const {
   isLoading,
   copyTooltip,
   showDisconnectModal,
-  showIntro
+  showIntro,
+  showTips
 } = uiReducer.actions
 
 export default uiReducer.reducer
