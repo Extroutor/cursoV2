@@ -3,6 +3,8 @@ import store from '../store'
 import { Provider } from 'react-redux'
 import '../styles/App.css'
 import '../styles/index.css'
+import '../styles/carousel.css'
+
 import {WagmiProvider} from 'wagmi'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 // import StreamDataUpdater from '../components/Stream/StreamsDataUpdater'

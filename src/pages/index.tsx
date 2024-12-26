@@ -4,6 +4,7 @@ import MainPageContent from "@/components/Pages/MainPage/MainPageContent.tsx"
 import {useSelector} from "react-redux"
 import Layout from "@/components/Layout"
 import Intro from "@/components/Pages/MainPage/Intro.tsx";
+import Tips from "@/components/Tips/Tips.tsx";
 
 const MainPage = () => {
   const address = useSelector((state: any) => state.user.address)
@@ -23,6 +24,7 @@ const MainPage = () => {
         <Layout>
           {address ? <MainPageContent/> : showIntro ? <Intro/> : <Welcome/>}
         </Layout>
+        <Tips/>
       </Box>
   )
 }
