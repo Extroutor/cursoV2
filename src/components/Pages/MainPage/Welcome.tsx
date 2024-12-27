@@ -30,27 +30,25 @@ const Welcome = () => {
   }
 
   return (
-    <Box>
+    <Box height='100%'>
       <Header title='CURSO'/>
       <Box sx={{
         marginTop: '62px',
-        // boxSizing: 'border-box'
+        boxSizing: 'border-box',
         height: '100%',
-        minHeight: '100%',
-        display: 'block',
       }}>
         <Box sx={{
-          display: 'block',
-
+          // display: 'block',
           borderRadius: '20px',
           bgcolor: '#F4F4F4',
-          height: 'calc(100vh - 104px)',
+          // height: 'calc(100vh - 104px)',
           position: 'relative',
-          minHeight: '100%'
+          minHeight: '100%',
+          height: '100%',
         }}>
           <Box sx={{
             width: '100%',
-            // height: '100vh'
+            height: '100%'
           }}>
             <Image
               src={mainImg}

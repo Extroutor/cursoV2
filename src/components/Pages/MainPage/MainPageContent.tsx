@@ -2,10 +2,10 @@ import ProcessedStream from "../../ProcessedStream/ProcessedStream.tsx"
 import WalletBalance from "../WalletPage/WalletBalance.tsx"
 import RecentStream from "../../RecentStream/RecentStream.tsx"
 import useStreams from "@/hooks/useStreams.tsx"
-import {Box} from "@mui/material";
-import Header from "@/components/Header.tsx";
-import {useSelector} from "react-redux";
-import Preview from "@/components/Pages/MainPage/Preview.tsx";
+import {Box} from "@mui/material"
+import Header from "@/components/Header.tsx"
+import {useSelector} from "react-redux"
+import Preview from "@/components/Pages/MainPage/Preview.tsx"
 import img from "@/icons/preview/curso1.svg"
 
 const MainPageContent = () => {
@@ -17,7 +17,7 @@ const MainPageContent = () => {
     <Box height='100%'>
       <Header title='CURSO'/>
       {isConnect ?
-        <Box mt='54px' mb='74px'>
+        <Box mt='54px' pb='94px'>
           <WalletBalance buyCrypto={false}/>
           <ProcessedStream streams={processedStream}/>
           {/*<PlannedStream/>*/}

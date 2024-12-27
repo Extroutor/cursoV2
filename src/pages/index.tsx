@@ -30,15 +30,19 @@ const MainPage = () => {
     else dispatch(showTips(false))
   }, [dispatch, address])
 
+  useEffect(() => {
+    const vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }, []);
+
   const setOpenTips = () => dispatch(showTips(true))
 
   return (
     <Box sx={{
       display: 'block',
       padding: '0 20px 20px',
-      minHeight: '100%',
       boxSizing: 'border-box',
-      height: '100%',
+      height: 'calc(var(--vh, 1vh) * 100 - 62px)',
     }}>
       <Layout>
         {address ? <MainPageContent/> : intro ? <Intro/> : <Welcome/>}

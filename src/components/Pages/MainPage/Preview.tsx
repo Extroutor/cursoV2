@@ -37,11 +37,14 @@ const Preview = ({img, title, description, connect}: {
 
   return (
     <Box sx={{
-      height: 'calc(100vh - 54px - 80px)',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      paddingTop: '54px',
+      boxSizing: 'border-box'
     }}
     >
       <Box sx={{
-        marginTop: '50px',
         // boxSizing: 'border-box'
         height: '100%',
         minHeight: '100%',
