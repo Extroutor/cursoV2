@@ -10,8 +10,8 @@ import ProgressTab from "@/components/Pages/MainPage/ProgressTab.tsx";
 import {useRouter} from "next/router";
 import {showIntro} from "@/store/reducers/uiReducer.tsx";
 import {mockAddress, setConnection} from "@/store/reducers/userReducer.ts";
-
-const Step = ({item, step, setState}) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Step = ({item, step, setState}: { item: any, step: any, setState: any }) => {
   const {address, isConnected: isConnect} = useAppKitAccount()
   const {open} = useAppKit()
   const {disconnect} = useDisconnect()
