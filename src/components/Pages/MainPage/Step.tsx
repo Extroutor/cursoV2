@@ -31,29 +31,29 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
 
   return (
     <Box sx={{
-      marginTop: '50px',
-      // boxSizing: 'border-box'
+      marginTop: '24px',
       height: '100%',
-      minHeight: '100%',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      marginBottom: '141px',
-      // position: 'relative'
-      overflow: 'auto'
+      // marginBottom: '141px',
+      // paddingBottom: '141px',
+      // position: 'relative',
     }}>
       <ProgressTab count={5} active={step}/>
       <Box sx={{
         display: 'flex',
         justifyContent: 'center',
         padding: '24px 18px',
-        width: '335px',
         alignItems: 'center',
         marginBottom: '20px',
       }}>
-        <Image src={item?.image} alt={'curso'}/>
+        {React.createElement(item.image)}
       </Box>
-      <Box sx={{}}>
+      <Box sx={{
+        overflow: 'scroll',
+        marginBottom: '110px',
+      }}>
         <Box style={{
           fontWeight: '700',
           lineHeight: '28.13px',
@@ -71,12 +71,12 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
           {item?.description}
         </Box>
         <Box sx={{
-          position: 'absolute',
+          position: 'fixed',
           bottom: 0,
           // width: '100%',
           left: 0,
           right: 0,
-          padding: '24px 20px',
+          padding: '0px 20px',
           bgcolor: '#fff',
           maxWidth: '800px',
           margin: '0 auto',
@@ -132,7 +132,7 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
                   width: '100%',
                   textAlign: 'center',
                   padding: '10px 0',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
                 }}
                      onClick={() => {
                        router.push('/')
