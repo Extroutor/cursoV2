@@ -60,10 +60,10 @@ const steps: StepType[] = [
 
 const Intro = () => {
   const [step, setStep] = useState(1)
-  const [stepObj, setStepObj] = useState()
+  const [stepObj, setStepObj] = useState<StepType | null>(null)
 
   useEffect(() => {
-    setStepObj(steps.find(item => item.step === step))
+    setStepObj(steps.find(item => item.step === step) || null)
     if (step === 2)
       localStorage.setItem('intro', 'shown')
   }, [step])
