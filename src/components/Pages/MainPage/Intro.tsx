@@ -1,16 +1,16 @@
 import React, {ReactElement, useEffect, useState} from 'react'
 import Step from "@/components/Pages/MainPage/Step.tsx"
+import img1 from "@/icons/welcome/curso1.tsx"
 import img2 from "@/icons/welcome/curso2.tsx"
 import img3 from "@/icons/welcome/curso3.tsx"
 import img4 from "@/icons/welcome/curso4.tsx"
 import img5 from "@/icons/welcome/curso5.tsx"
 import {Box} from "@mui/material";
-import Curso1 from "@/icons/welcome/curso1.tsx";
 
 type StepType = {
   step: number,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  image: ReactElement,
+  image: any,
   title: ReactElement,
   description: ReactElement,
   connect?: boolean
@@ -19,7 +19,7 @@ type StepType = {
 const steps: StepType[] = [
   {
     step: 1,
-    image: Curso1,
+    image: img1,
     title: <div>Hey there! <span style={{color: '#56AAC8'}}>CURSO</span> here — your new, easy way to pay for services
     </div>,
     description: <div>Our app uses a cool technology that sends money from you to the service provider every second.
