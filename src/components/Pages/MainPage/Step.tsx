@@ -75,7 +75,7 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
           // width: '100%',
           left: 0,
           right: 0,
-          padding: '0px 20px',
+          padding: '0px 20px 24px',
           bgcolor: '#fff',
           maxWidth: '800px',
           margin: '0 auto',
