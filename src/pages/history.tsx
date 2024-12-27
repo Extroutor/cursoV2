@@ -9,6 +9,7 @@ import img from "@/icons/preview/curso2.svg"
 
 const HistoryPage = () => {
   const {t} = useTranslation()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const isConnect = useSelector((state: any) => state.user.isConnect)
 
   return (

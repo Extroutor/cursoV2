@@ -12,6 +12,7 @@ import {useRouter} from "next/router"
 const Header = ({title}: { title: string }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const address = useSelector((state: any) => state.user.address)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const isConnect = useSelector((state: any) => state.user.isConnect)
   const location = useRouter()
   const dispatch = useDispatch()

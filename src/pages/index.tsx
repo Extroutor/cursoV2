@@ -9,8 +9,11 @@ import {useEffect} from "react"
 import {showIntro, showTips} from "@/store/reducers/uiReducer.tsx"
 
 const MainPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const address = useSelector((state: any) => state.user.address)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const intro = useSelector((state: any) => state.ui.intro)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const tips = useSelector((state: any) => state.ui.tips)
   const dispatch = useDispatch()
 

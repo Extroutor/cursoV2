@@ -9,6 +9,7 @@ import {Box} from "@mui/material";
 
 type StepType = {
   step: number,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any,
   title: ReactElement,
   description: ReactElement,

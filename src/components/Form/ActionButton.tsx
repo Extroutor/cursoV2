@@ -14,6 +14,7 @@ const ActionButton = ({step, changeStep, title}: { step?: number, changeStep: an
     formState: {errors},
   } = useFormContext()
   const {address, isConnected: isConnect} = useAppKitAccount();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const isConnecting = useSelector((state: any) => state.user.isConnect)
 
   const isDisabled = Object.keys(errors).length !== 0

@@ -1,6 +1,6 @@
 import {Modal} from "@mui/material";
 import React from "react";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const TipsModal = ({children, isOpen, setOpen}: { children: any, isOpen: boolean, setOpen: any }) => {
   return (
     <Modal

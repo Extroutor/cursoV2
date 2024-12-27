@@ -1,6 +1,6 @@
 import React from 'react';
 import {DotButton, useDotButton} from "@/components/Tips/DotButton.tsx";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TipsProgressTab = ({emblaApi}: {emblaApi: any}) => {
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 

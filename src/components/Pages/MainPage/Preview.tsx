@@ -9,6 +9,7 @@ import {useAppKit, useAppKitAccount} from "@reown/appkit/react";
 import {setConnection} from "@/store/reducers/userReducer.ts";
 
 const Preview = ({img, title, description, connect}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   img: any,
   title: string,
   description: string,

@@ -10,6 +10,7 @@ import img from "@/icons/preview/curso1.svg"
 
 const MainPageContent = () => {
   const {streams, processedStream} = useStreams()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const isConnect = useSelector((state: any) => state.user.isConnect)
 
   return (
