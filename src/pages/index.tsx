@@ -26,9 +26,9 @@ const MainPage = () => {
     if (!localTips && address && address !== '1')
       setTimeout(() => {
         dispatch(showTips(true))
-      }, 2000)
+      }, 3000)
     else dispatch(showTips(false))
-  }, [dispatch])
+  }, [dispatch, address])
 
   useEffect(() => {
     const updateVh = () => {
