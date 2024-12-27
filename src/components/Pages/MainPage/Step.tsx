@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import {Box} from "@mui/material"
-import Image from "next/image"
 import {useDisconnect} from "wagmi";
 import {useAppKit, useAppKitAccount} from '@reown/appkit/react'
 import {WalletConnectButton} from "@/components/WalletConnectButton.tsx"
