@@ -37,7 +37,6 @@ const useStreams = () => {
             }
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const streams: any = await Promise.all(streamPromises)
-            console.log('streams', streams)
             setStreams(streams)
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             setProcessedStream(streams.filter((stream: any) => stream.status === 0 && stream.end_date > Date.now()) || [])

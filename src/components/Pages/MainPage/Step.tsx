@@ -36,6 +36,9 @@ const Step = ({item, step, setState}) => {
       height: '100%',
       minHeight: '100%',
       display: 'block',
+      marginBottom: '141px',
+      // position: 'relative'
+      overflow: 'auto'
     }}>
       <ProgressTab count={5} active={step}/>
       <Box sx={{

@@ -20,12 +20,12 @@ const MainPage = () => {
 
     if (!localIntro) dispatch(showIntro(true))
     else dispatch(showIntro(false))
-    if (!localTips)
+    if (!localTips && address && address !== '1')
       setTimeout(() => {
         dispatch(showTips(true))
-      }, 3000)
+      }, 2000)
     else dispatch(showTips(false))
-  }, [dispatch])
+  }, [dispatch, address])
 
   const setOpenTips = () => dispatch(showTips(true))
 
