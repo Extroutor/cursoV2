@@ -14,7 +14,7 @@ const ProgressTab = ({count, active}: { count: number, active: number }) => {
         gap: '6px',
         margin: '0 auto',
       }}>
-        {Array(count).fill().map((_, index) => (
+        {Array(count).fill(null).map((_, index) => (
           <motion.div
             key={index}
             initial={{width: '6px', backgroundColor: '#E5E5E5'}}
