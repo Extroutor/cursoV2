@@ -26,7 +26,7 @@
                 });
 
                 const reversedGrouped = Object.keys(grouped)
-                  .sort((a, b) => new Date(b) - new Date(a))
+                  .sort((a, b) => new Date(b.split(' ').reverse().join(' ')) - new Date(a.split(' ').reverse().join(' '))) // Преобразуем строки в даты
                   .reduce((acc, key) => {
                       acc[key] = grouped[key]
                       return acc
