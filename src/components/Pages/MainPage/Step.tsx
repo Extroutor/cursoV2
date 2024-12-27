@@ -35,7 +35,9 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
       // boxSizing: 'border-box'
       height: '100%',
       minHeight: '100%',
-      display: 'block',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
       marginBottom: '141px',
       // position: 'relative'
       overflow: 'auto'
@@ -45,6 +47,8 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
         display: 'flex',
         justifyContent: 'center',
         padding: '24px 18px',
+        width: '335px',
+        alignItems: 'center',
         marginBottom: '20px',
       }}>
         <Image src={item?.image} alt={'curso'}/>
