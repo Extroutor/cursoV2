@@ -28,7 +28,7 @@ const MainPage = () => {
         dispatch(showTips(true))
       }, 2000)
     else dispatch(showTips(false))
-  }, [dispatch, address])
+  }, [dispatch])
 
   useEffect(() => {
     const updateVh = () => {
