@@ -18,7 +18,8 @@ const MenuStyledComponent = styled(Box)({
   maxWidth: '800px',
   margin: '0 auto'
 })
-const Menu = ({styledProps, tips = false}) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Menu = ({styledProps, tips = false}: {styledProps?: any, tips?: boolean}) => {
   const {pathname} = useRouter()
   const [activeItem, setActive]
     = useState(menuOptions.find((item) => item.route === pathname)?.id || -1)
