@@ -1,8 +1,11 @@
 import {Box} from "@mui/material";
-import Image from "next/image";
-import img from "@/icons/tips/swipe.svg";
+import React from "react";
+import {showTips} from "@/store/reducers/uiReducer.tsx";
+import {useDispatch} from "react-redux";
 
-export const Slide8 = () => {
+export const Slide9 = () => {
+  const dispatch = useDispatch()
+
   return (
     <Box sx={{
       display: 'flex',
@@ -11,18 +14,66 @@ export const Slide8 = () => {
       flexDirection: 'column',
       alignItems: 'center',
       height: 'calc(var(--vh, 1vh) * 100)',
-      gap: '20px',
       position: 'relative',
       flex: '0 0 100%',
       minWidth: 0
     }}>
-      <Image src={img} alt={'curso'}/>
       <Box sx={{
-        color: '#FFFFFF',
-        fontSize: '14px',
-        width: '180px',
-        textAlign: 'center',
-      }}>Swipe left to go to the next hint, or right to go back.</Box>
+        bgcolor: '#FFF',
+        borderRadius: '20px',
+        width: '280px',
+        boxSizing: 'border-box',
+        border: 'none',
+        outline: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '24px 20px',
+      }}
+           onClick={(e) => e.stopPropagation()}>
+        <Box lineHeight='18.75px'>It looks like that's it!</Box>
+        <span style={{
+          color: '#8F8F8F',
+          textAlign: 'center',
+          marginTop: '12px',
+          fontSize: '14px',
+          lineHeight: '16.41px',
+        }}>If you still have questions, check out the tutorials for more info or shoot us a message and we'll help you out. We're here to help, so don't hesitate to ask.</span>
+        <Box sx={{
+          bgcolor: '#292929',
+          borderRadius: '100px',
+          color: '#FFFFFF',
+          padding: '10px 24px',
+          width: '100%',
+          boxSizing: 'border-box',
+          textAlign: 'center',
+          mt: '20px',
+          lineHeight: '18.75px',
+          cursor: 'pointer',
+        }}
+             onClick={() => {
+               dispatch(showTips(false))
+               localStorage.setItem('tips', 'shown')
+             }}
+        >
+          Got It
+        </Box>
+        <span style={{
+          color: '#8F8F8F',
+          fontSize: '14px',
+          marginTop: '18px',
+          lineHeight: '16.41px',
+          marginBottom: '2px',
+          cursor: 'pointer',
+        }}
+              onClick={() => {
+                // dispatch(showTips(false))
+                // localStorage.setItem('tips', 'shown')
+              }}
+        >Check out the tutorials </span>
+      </Box>
     </Box>
+
   )
 }

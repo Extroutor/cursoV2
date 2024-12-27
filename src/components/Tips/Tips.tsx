@@ -51,6 +51,7 @@ const Tips = ({isOpen, setOpen}: { isOpen: boolean, setOpen: () => void }) => {
           }}
                onClick={() => {
                  setStep(1)
+                 window.scroll(0, 0)
                }}
           >
             Let's see

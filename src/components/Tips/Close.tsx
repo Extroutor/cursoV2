@@ -20,7 +20,10 @@ const Close = () => {
       cursor: 'pointer',
       zIndex: 3
     }}
-         onClick={() => dispatch(showTips(false))}
+         onClick={() => {
+           dispatch(showTips(false))
+           localStorage.setItem('tips', 'shown')
+         }}
     >
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
