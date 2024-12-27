@@ -15,7 +15,7 @@ const RecentStreamList = () => {
   useEffect(() => {
     const groupByDate = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const grouped: any = {};
+      const grouped: GroupedStream = {}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       streams.forEach((transaction: any) => {
         const date = new Date(transaction.start_date).toLocaleDateString('en-GB', {day: 'numeric', month: 'long'})
@@ -27,7 +27,7 @@ const RecentStreamList = () => {
 
       const reversedGrouped = Object.keys(grouped)
         .sort((a, b) => new Date(b).getTime() - new Date(a).getTime())
-        .reduce((acc, key) => {
+        .reduce((acc: GroupedStream, key) => {
           acc[key] = grouped[key];
           return acc;
         }, {});
