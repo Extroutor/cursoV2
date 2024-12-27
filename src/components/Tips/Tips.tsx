@@ -11,7 +11,7 @@ const Tips = ({isOpen, setOpen}: { isOpen: boolean, setOpen: () => void }) => {
 
   return (
     <TipsModal isOpen={isOpen} setOpen={setOpen}>
-      {step === 0 ? <Box sx={{
+      {step === 0 && step === 9 ? <Box sx={{
           bgcolor: '#FFF',
           position: 'fixed',
           top: '50%',

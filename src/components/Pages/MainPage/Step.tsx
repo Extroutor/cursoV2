@@ -50,7 +50,6 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
         {React.createElement(item.image)}
       </Box>
       <Box sx={{
-        overflow: 'scroll',
         marginBottom: '110px',
       }}>
         <Box style={{
