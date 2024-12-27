@@ -5,7 +5,7 @@ import Carousel from "@/components/Tips/Carousel.tsx"
 import {showTips} from "@/store/reducers/uiReducer.tsx";
 import {useDispatch} from "react-redux";
 
-const Tips = ({isOpen, setOpen}) => {
+const Tips = ({isOpen, setOpen}: { isOpen: boolean, setOpen: () => void }) => {
   const [step, setStep] = useState(0)
   const dispatch = useDispatch()
 
