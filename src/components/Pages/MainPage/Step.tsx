@@ -118,7 +118,8 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
                   cursor: 'pointer',
                 }}
                      onClick={() => {
-                       setState((step) => step + 1)
+                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                       setState((step: any) => step + 1)
                      }}
                 >Next</Box>
                 <Box sx={{
