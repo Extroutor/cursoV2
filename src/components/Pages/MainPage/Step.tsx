@@ -50,7 +50,7 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
         {React.createElement(item.image)}
       </Box>
       <Box sx={{
-        marginBottom: '110px',
+        paddingBottom: '124px',
       }}>
         <Box style={{
           fontWeight: '700',
@@ -82,7 +82,7 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
           <Box sx={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 1,
+            gap: '8px',
           }}>
             {item.connect
               ?
@@ -92,6 +92,8 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
                   color: '#8F8F8F',
                   fontSize: '14px',
                   width: '100%',
+                  height: '36px',
+                  boxSizing: 'border-box',
                   textAlign: 'center',
                   padding: '10px 0',
                   cursor: 'pointer'
@@ -107,8 +109,10 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
               <>
                 <Box sx={{
                   borderRadius: '100px',
+                  boxSizing: 'border-box',
                   backgroundColor: '#56AAC8',
                   width: '100%',
+                  height: '39px',
                   padding: '10px 0',
                   fontWeight: '500',
                   fontFamily: 'HarmonyOS Sans, serif',
@@ -126,11 +130,13 @@ const Step = ({item, step, setState}: { item: any, step: any, setState: any }) =
                 >Next</Box>
                 <Box sx={{
                   color: '#8F8F8F',
+                  boxSizing: 'border-box',
                   fontSize: '14px',
                   width: '100%',
                   textAlign: 'center',
                   padding: '10px 0',
                   cursor: 'pointer',
+                  height: '36px',
                 }}
                      onClick={() => {
                        router.push('/')
