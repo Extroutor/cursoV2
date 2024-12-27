@@ -27,7 +27,6 @@ const Tips = ({isOpen, setOpen}: { isOpen: boolean, setOpen: () => void }) => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center'
-
         }}
                          onClick={(e) => e.stopPropagation()}>
           <Box lineHeight='18.75px'>Welcome to CURSO!</Box>

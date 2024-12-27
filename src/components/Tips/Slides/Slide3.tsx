@@ -10,7 +10,7 @@ export const Slide3 = () => {
       marginBottom: '20px',
       flexDirection: 'column',
       alignItems: 'center',
-      height: '100vh',
+      height: 'calc(var(--vh, 1vh) * 100)',
       gap: '20px',
       position: 'relative',
       flex: '0 0 100%',

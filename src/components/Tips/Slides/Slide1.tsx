@@ -10,11 +10,10 @@ export const Slide1 = () => {
       marginBottom: '20px',
       flexDirection: 'column',
       alignItems: 'center',
-      height: '100vh',
+      height: 'calc(var(--vh, 1vh) * 100)',
       gap: '20px',
       position: 'relative',
       flex: '0 0 100%',
-      minWidth: 0
     }}>
 
       <Image src={img} alt={'curso'}/>
