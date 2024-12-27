@@ -4,19 +4,18 @@ import RecentStream from "../../RecentStream/RecentStream.tsx"
 import useStreams from "@/hooks/useStreams.tsx"
 import {Box} from "@mui/material"
 import Header from "@/components/Header.tsx"
-import {useSelector} from "react-redux"
 import Preview from "@/components/Pages/MainPage/Preview.tsx"
 import img from "@/icons/preview/curso1.svg"
+import {useAppKitAccount} from "@reown/appkit/react";
 
 const MainPageContent = () => {
   const {streams, processedStream} = useStreams()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const isConnect = useSelector((state: any) => state.user.isConnect)
+  const {isConnected} = useAppKitAccount();
 
   return (
     <Box height='100%'>
       <Header title='CURSO'/>
-      {isConnect ?
+      {isConnected ?
         <Box mt='54px' pb='94px'>
           <WalletBalance buyCrypto={false}/>
           <ProcessedStream streams={processedStream}/>

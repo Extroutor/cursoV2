@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getCount, getStreamDataByIndex} from "@/blockchain/streams.ts"
 import {isLoading} from "@/store/reducers/uiReducer.tsx";
+import {useAppKitAccount} from "@reown/appkit/react";
 
 const useStreams = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,12 +12,13 @@ const useStreams = () => {
     const [recentStream, setRecentStream] = useState([])
     const dispatch = useDispatch()
     const [addressLoaded, setAddressLoaded] = useState(false)
+    const {address: addr, isConnected} = useAppKitAccount()
 
     useEffect(() => {
-        if (address && !addressLoaded) {
+        if (addr && isConnected) {
             setAddressLoaded(true)
         }
-    }, [address])
+    }, [addr, isConnected])
 
     useEffect(() => {
         if (addressLoaded) {

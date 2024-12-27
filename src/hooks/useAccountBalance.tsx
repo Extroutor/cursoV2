@@ -2,10 +2,12 @@ import {useState, useEffect} from 'react'
 import {getAccountBalance} from "@/blockchain/getBalance.ts"
 import {MaticABI, MaticToken, USDCABI, USDCToken} from "@/blockchain/constraints.ts"
 import {AddressType} from "@/types/system.ts";
+import {useAppKitAccount} from "@reown/appkit/react";
 
 const useAccountBalance = (address: AddressType, token: 'usdc' | 'matic') => {
   const [balance, setBalance] = useState<number | null>(null)
   const [balanceLoading, setBalanceLoading] = useState(true)
+  const {address: addr, isConnected} = useAppKitAccount()
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout
@@ -13,7 +15,7 @@ const useAccountBalance = (address: AddressType, token: 'usdc' | 'matic') => {
 
     const fetchBalance = () => {
       const chosenToken = token === 'usdc' ? {address: USDCToken, abi: USDCABI} : {address: MaticToken, abi: MaticABI}
-      getAccountBalance(address, chosenToken)
+      getAccountBalance(addr, chosenToken)
         .then((data) => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
           setBalance(data)
@@ -33,7 +35,7 @@ const useAccountBalance = (address: AddressType, token: 'usdc' | 'matic') => {
     return () => {
       clearInterval(intervalId)
     };
-  }, [address, token])
+  }, [addr, isConnected, token])
 
   return {balance, balanceLoading}
 }

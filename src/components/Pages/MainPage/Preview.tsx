@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect} from 'react'
 import {Box} from "@mui/material"
 import Image from "next/image"
-import {WalletConnectButton} from "@/components/WalletConnectButton.tsx";
-import {useDisconnect} from "wagmi";
-import {useDispatch} from "react-redux";
-import {connectHandler} from "@/utils/connectHandler.ts";
-import {useAppKit, useAppKitAccount} from "@reown/appkit/react";
-import {setConnection} from "@/store/reducers/userReducer.ts";
+import {WalletConnectButton} from "@/components/WalletConnectButton.tsx"
+import {useDisconnect} from "wagmi"
+import {useDispatch} from "react-redux"
+import {connectHandler} from "@/utils/connectHandler.ts"
+import {useAppKit, useAppKitAccount} from "@reown/appkit/react"
 
 const Preview = ({img, title, description, connect}: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,7 +30,7 @@ const Preview = ({img, title, description, connect}: {
     open().then(() => {
       console.log('test')
       console.log("address", address)
-      if (address && address !== '1') dispatch(setConnection(true))
+      if (address && address !== '1') window.location.reload()
     })
   }
 

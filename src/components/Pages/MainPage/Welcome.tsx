@@ -70,6 +70,7 @@ const Welcome = () => {
               fontWeight: '700',
               lineHeight: '42.19px',
               fontSize: '36px',
+              marginBottom: '8px',
             }}>
               {t('welcome:text1')} <span style={{color: '#56AAC8'}}>Curso</span> {t('welcome:text2')}
             </Box>
