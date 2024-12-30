@@ -1,6 +1,6 @@
-import {Box} from "@mui/material";
-import Image from "next/image";
-import img from "@/icons/tips/swipe.svg";
+import {Box} from "@mui/material"
+import React from "react"
+import Swipe from "@/icons/tips/swipe.tsx"
 
 export const Slide1 = () => {
   return (
@@ -15,8 +15,7 @@ export const Slide1 = () => {
       position: 'relative',
       flex: '0 0 100%',
     }}>
-
-      <Image src={img} alt={'curso'}/>
+      <Swipe/>
       <Box sx={{
         color: '#FFFFFF',
         fontSize: '14px',

@@ -6,9 +6,10 @@ import Loading from "./Modals/Loading"
 import Tooltip from "./Tooltip"
 import DisconnectModal from "./Modals/DisconnectModal"
 import {Box} from "@mui/material";
-import {addAddress, setConnection, setNickname} from "@/store/reducers/userReducer";
-import {getNicknameByAddress} from "@/blockchain/nickname";
-import {useAppKitAccount} from "@reown/appkit/react";
+import {addAddress, setConnection, setNickname} from "@/store/reducers/userReducer"
+import {getNicknameByAddress} from "@/blockchain/nickname"
+import {useAppKitAccount} from "@reown/appkit/react"
+import {useDisconnect} from "wagmi"
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Layout = ({children}: any) => {
   const router = useRouter()
@@ -16,13 +17,16 @@ const Layout = ({children}: any) => {
   const addressState = useSelector((state: any) => state.user.address)
   const {address, isConnected: isConnect} = useAppKitAccount();
   const dispatch = useDispatch()
+  const {disconnect} = useDisconnect()
 
-  console.log("address is Connected", address, isConnect, addressState)
+  // console.log("address is Connected", address, isConnect, addressState)
 
   useEffect(() => {
     if (isConnect) {
       const localStorageAddress = localStorage.getItem('address') || null
       const localStorageNickname = localStorage.getItem('nickname') || null
+
+      if (!localStorageAddress) disconnect()
 
       if (localStorageAddress || address) {
         dispatch(addAddress(localStorageAddress || address))

@@ -1,6 +1,6 @@
 import {Box} from "@mui/material";
 import Image from "next/image";
-import img from "@/icons/tips/swipe.svg";
+import img from "@/icons/tips/swipe.tsx";
 
 export const Slide8 = () => {
   return (

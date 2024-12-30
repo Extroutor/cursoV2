@@ -1,8 +1,10 @@
 import {Box} from "@mui/material";
-import Image from "next/image";
-import img from "@/icons/tips/swipe.svg";
+import {Button} from "@mui/joy";
+import {useRouter} from "next/router";
 
 export const Slide6 = () => {
+  const router = useRouter()
+
   return (
     <Box sx={{
       display: 'flex',
@@ -16,7 +18,7 @@ export const Slide6 = () => {
       flex: '0 0 100%',
       minWidth: 0
     }}>
-      <Image src={img} alt={'curso'}/>
+      <Button onClick={() => router.push('/wallet')}>click</Button>
       <Box sx={{
         color: '#FFFFFF',
         fontSize: '14px',

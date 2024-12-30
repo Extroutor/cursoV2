@@ -13,7 +13,8 @@ export const Slide2 = () => {
       gap: '20px',
       position: 'relative',
       flex: '0 0 100%',
-      minWidth: 0
+      minWidth: 0,
+      pointerEvents: 'none',
     }}>
       <Menu
         styledProps={{
