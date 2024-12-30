@@ -1,10 +1,12 @@
-import {Box} from "@mui/material";
-import React from "react";
-import {showTips} from "@/store/reducers/uiReducer.tsx";
-import {useDispatch} from "react-redux";
+import {Box} from "@mui/material"
+import React from "react"
+import {showTips} from "@/store/reducers/uiReducer.tsx"
+import {useDispatch} from "react-redux"
+import {useRouter} from "next/router";
 
 export const Slide9 = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   return (
     <Box sx={{
@@ -54,6 +56,7 @@ export const Slide9 = () => {
         }}
              onClick={() => {
                dispatch(showTips(false))
+               router.push('/')
                localStorage.setItem('tips', 'shown')
              }}
         >
@@ -68,8 +71,6 @@ export const Slide9 = () => {
           cursor: 'pointer',
         }}
               onClick={() => {
-                // dispatch(showTips(false))
-                // localStorage.setItem('tips', 'shown')
               }}
         >Check out the tutorials </span>
       </Box>

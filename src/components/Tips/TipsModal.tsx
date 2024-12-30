@@ -1,7 +1,12 @@
 import {Modal} from "@mui/material";
 import React from "react";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const TipsModal = ({children, isOpen, setOpen}: { children: any, isOpen: boolean, setOpen: any }) => {
+export const TipsModal = ({children, isOpen, setOpen}: {
+  children: any;
+  isOpen: boolean;
+  setOpen: (open: boolean) => void
+}) => {
   return (
     <Modal
       open={isOpen}
@@ -19,7 +24,9 @@ export const TipsModal = ({children, isOpen, setOpen}: { children: any, isOpen: 
         e.stopPropagation()
       }}
     >
-      {children}
+      <div onClick={(e) => e.stopPropagation()}>
+        {children}
+      </div>
     </Modal>
-  )
-}
+  );
+};

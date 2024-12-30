@@ -4,14 +4,22 @@ import WalletBalance from "@/components/Pages/WalletPage/WalletBalance.tsx"
 import TokenList from "@/components/Pages/WalletPage/TokenList.tsx";
 import {useTranslation} from "react-i18next";
 import Layout from "@/components/Layout"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Preview from "@/components/Pages/MainPage/Preview.tsx";
 import img from "@/icons/preview/curso3.svg";
+import Tips from "@/components/Tips/Tips.tsx";
+import {showTips} from "@/store/reducers/uiReducer.tsx";
 
 const WalletPage = () => {
   const {t} = useTranslation()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const isConnect = useSelector((state: any) => state.user.isConnect)
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const tips = useSelector((state: any) => state.ui.tips)
+  const shownTips = localStorage.getItem('tips')
+  const dispatch = useDispatch()
+  const setOpenTips = () => dispatch(showTips(true))
 
   return (
     <Box sx={{
@@ -36,6 +44,7 @@ const WalletPage = () => {
           }
         </Box>
       </Layout>
+      <Tips isOpen={tips && !shownTips} initialStep={6} setOpen={setOpenTips}/>
     </Box>
   )
 }

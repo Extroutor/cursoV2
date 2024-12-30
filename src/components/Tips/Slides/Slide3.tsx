@@ -23,6 +23,7 @@ export const Slide3 = () => {
         zIndex: 100,
         width: '100%',
         pointerEvents: 'none',
+        maxWidth: '840px',
       }}>
         <WalletBalance buyCrypto={false}/>
         <Box sx={{

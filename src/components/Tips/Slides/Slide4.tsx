@@ -12,8 +12,6 @@ export const Slide4 = () => {
     amIRecipient: true,
     status: 1,
   }
-  console.log("start", Math.floor(Date.now()))
-  console.log("end", Math.floor(Date.now() + 900))
 
   return (
     <Box sx={{
@@ -36,6 +34,7 @@ export const Slide4 = () => {
         boxSizing: 'border-box',
         zIndex: 100,
         pointerEvents: 'none',
+        maxWidth: '840px',
       }}>
         <ProcessedStreamItem data={mockData}/>
         <Box sx={{

@@ -5,8 +5,8 @@ import Matic from "@/icons/matic.tsx";
 import useAccountBalance from "@/hooks/useAccountBalance.tsx";
 import {useSelector} from "react-redux";
 import {ClipLoader} from "react-spinners";
-
-const TokenItem = ({token}: { token: 'usdc' | 'matic' }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const TokenItem = ({token, styleProps}: { token: 'usdc' | 'matic', styleProps: any }) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const address = useSelector((store: any) => store.user.address)
     const {balance, balanceLoading} = useAccountBalance(address, token)
@@ -16,7 +16,9 @@ const TokenItem = ({token}: { token: 'usdc' | 'matic' }) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            padding: '9px 0'
+            padding: '9px 0',
+            bgcolor: '#fff',
+            ...styleProps
         }}>
             <Box sx={{
                 display: 'flex',

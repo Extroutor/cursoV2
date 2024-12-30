@@ -5,8 +5,8 @@ import Carousel from "@/components/Tips/Carousel.tsx"
 import {showTips} from "@/store/reducers/uiReducer.tsx";
 import {useDispatch} from "react-redux";
 
-const Tips = ({isOpen, setOpen}: { isOpen: boolean, setOpen: () => void }) => {
-  const [step, setStep] = useState(0)
+const Tips = ({isOpen, setOpen, initialStep = 0}: { isOpen: boolean, initialStep?: number, setOpen: () => void }) => {
+  const [step, setStep] = useState(initialStep)
   const dispatch = useDispatch()
 
   return (
@@ -70,7 +70,7 @@ const Tips = ({isOpen, setOpen}: { isOpen: boolean, setOpen: () => void }) => {
                 }}
           >Skip</span>
         </Box>
-        : step === 1 && <Carousel/>}
+        : <Carousel initialStep={initialStep}/>}
     </TipsModal>
   )
 }
